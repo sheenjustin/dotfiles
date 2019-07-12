@@ -1,1 +1,34 @@
+# Get rid of save, checkedout, experiments, and stage directories.
+**save/
+**checkedout/
+**experiments/
+stage*/
+elend_prod/
+**flex/
+
+# Files with dev names
+*steve*
+*Steve*
+*asad*
+*Asad*
+*nelli*
+*Nelli*
+*sheen*
+*Sheen*
+*robert*
+*Robert*
+*katha*
+*Katha*
+*vidya*
+*Vidya*
+
+# Backup files
+*backup*
+*BACKUP*
+
+# Unused File extensions
+*.bak
+*.BAK
+*.swp
+*.swo
 .cfg
