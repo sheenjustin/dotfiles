@@ -24,13 +24,13 @@ compinit
   export TERM='xterm-color'
 
 # Custom Prompt
-  newline=$'\n'
-  datetime=$'%@'
-  currentdir=$'%F{yellow}%~%f'
-  nameathost=$'%F{magenta}%n%f@%F{cyan}%m%f'
-  histnum=$'%F{green}%!%f'
+#  newline=$'\n'
+#  datetime=$'%@'
+#  currentdir=$'%F{yellow}%~%f'
+#  nameathost=$'%F{magenta}%n%f@%F{cyan}%m%f'
+#  histnum=$'%F{green}%!%f'
 
-  export PROMPT="${newline}${datetime} ${currentdir} ${newline}${nameathost} ${histnum} > "
+ # export PROMPT="${newline}${datetime} ${currentdir} ${newline}${nameathost} ${histnum} > "
 
 # Prettify completion
   zstyle ':completion:*' menu select
