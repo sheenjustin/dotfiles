@@ -45,7 +45,7 @@ ENABLE_CORRECTION="true"
 #  datetime=$'%@'
 #  currentdir=$'%F{yellow}%~%f'
 #  nameathost=$'%F{magenta}%n%f@%F{cyan}%m%f'
-#  histnum=$'%F{green}%!%f'
+  histnum=$'%F{green}%!%f'
 
 #  export PROMPT="${newline}${datetime} ${currentdir} ${newline}${nameathost} ${histnum} > "
 
@@ -84,5 +84,61 @@ ENABLE_CORRECTION="true"
   source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
  # Spaceship Prompt
-   autoload -Uz promptinit; promptinit
-   prompt spaceship
+
+  SPACESHIP_PROMPT_ORDER=(
+    user          # Username section
+    host          # Hostname section
+    dir           # Current directory section
+    git           # Git section (git_branch + git_status)
+    hg            # Mercurial section (hg_branch  + hg_status)
+    package       # Package version
+    node          # Node.js section
+    ruby          # Ruby section
+    elixir        # Elixir section
+    xcode         # Xcode section
+    swift         # Swift section
+    golang        # Go section
+    php           # PHP section
+    rust          # Rust section
+    haskell       # Haskell Stack section
+    julia         # Julia section
+    docker        # Docker section
+    aws           # Amazon Web Services section
+    venv          # virtualenv section
+    conda         # conda virtualenv section
+    pyenv         # Pyenv section
+    dotnet        # .NET section
+    ember         # Ember.js section
+    kubecontext   # Kubectl context section
+    terraform     # Terraform workspace section
+    exec_time     # Execution time
+    line_sep      # Line break
+    time          # Time stamps section
+    battery       # Battery level and status
+    vi_mode       # Vi-mode indicator
+    jobs          # Background jobs indicator
+    exit_code     # Exit code section
+    char          # Prompt character
+  )
+  export SPACESHIP_CHAR_SYMBOL='❯'
+  export SPACESHIP_CHAR_SYMBOL_ROOT='#'
+  export SPACESHIP_CHAR_SUFFIX=' '
+
+  export SPACESHIP_USER_COLOR='magenta'
+  export SPACESHIP_USER_PREFIX='as '
+  export SPACESHIP_USER_SUFFIX=''
+
+  export SPACESHIP_HOST_PREFIX='@'
+  export SPACESHIP_HOST_COLOR_SSH='cyan'
+
+  export SPACESHIP_DIR_COLOR='yellow'
+  export SPACESHIP_DIR_PREFIX=''
+
+  export SPACESHIP_TIME_SHOW=true
+  export SPACESHIP_TIME_COLOR='white'
+  export SPACESHIP_TIME_PREFIX=''
+  export SPACESHIP_TIME_FORMAT='%D{%I:%M %p} %F{blue}%!%f'
+#  export SPACESHIP_TIME_12HR=true
+
+  autoload -Uz promptinit; promptinit
+  prompt spaceship
