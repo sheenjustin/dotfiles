@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/opt/iplanet/servers/docs/elend/borrower'
+let g:netrw_dirhist_2='/opt/iplanet/servers/docs/clstransfer'
+let g:netrw_dirhist_3='/opt/iplanet/servers/docs/elend/ws_test_root'
