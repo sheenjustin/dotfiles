@@ -57,7 +57,7 @@ ENABLE_CORRECTION="true"
 # Ease of use Alias
   alias install='sudo apt install'
   alias update='sudo apt update'
-  alias upgrade='update && apt upgrade'
+  alias upgrade='update && sudo apt upgrade'
   alias ant='/usr/local/bin/apache-ant-1.9.6/bin/ant'
   alias tail='tail -300'
   alias tailf='tail -f'
