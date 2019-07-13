@@ -23,7 +23,7 @@ elend_prod/
 *Vidya*
 
 # Backup files
-*backup*
+*.backup*
 *BACKUP*
 
 # Unused File extensions
