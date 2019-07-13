@@ -7,3 +7,9 @@
 [submodule ".vim/bundle/sensible"]
 	path = .vim/bundle/sensible
 	url = https://tpope.io/vim/sensible.git
+[submodule ".vim/bundle/cf-utils"]
+	path = .vim/bundle/cf-utils
+	url = https://github.com/davejlong/cf-utils.vim
+[submodule ".vim/bundle/indentLine"]
+	path = .vim/bundle/indentLine
+	url = https://github.com/Yggdroot/indentLine
