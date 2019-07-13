@@ -26,6 +26,7 @@
 
 # Add custom functions
   fpath=(~/.zsh/funcs $fpath)
+  fpath=(~/.zsh/plugins $fpath)
 
   for file in ~/.zsh/funcs/*; do
 	autoload $file:t:r
@@ -73,7 +74,7 @@
   alias dev='ssh sjustin@ca1danube.sba.gov'
 
 # Source plugins
-  source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
  # Spaceship Prompt
 

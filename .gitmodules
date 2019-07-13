@@ -1,9 +1,3 @@
-[submodule "spaceship-prompt"]
-	path = spaceship-prompt
-	url = https://github.com/denysdovhan/spaceship-prompt
-[submodule "zsh-syntax-highlighting"]
-	path = zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting
 [submodule ".vim/bundle/sensible"]
 	path = .vim/bundle/sensible
 	url = https://tpope.io/vim/sensible.git
@@ -13,3 +7,9 @@
 [submodule ".vim/bundle/indentLine"]
 	path = .vim/bundle/indentLine
 	url = https://github.com/Yggdroot/indentLine
+[submodule ".zsh/plugins/spaceship-prompt"]
+	path = .zsh/plugins/spaceship-prompt
+	url = https://github.com/denysdovhan/spaceship-prompt
+[submodule ".zsh/plugins/zsh-syntax-highlighting"]
+	path = .zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
