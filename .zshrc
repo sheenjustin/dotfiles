@@ -15,7 +15,7 @@
 # End of lines added by compinstall
 
 # autocomplete
-ENABLE_CORRECTION="true"
+  ENABLE_CORRECTION="true"
 
 # Delete Keybind
   bindkey    "^[[3~"          delete-char
@@ -45,7 +45,7 @@ ENABLE_CORRECTION="true"
 #  datetime=$'%@'
 #  currentdir=$'%F{yellow}%~%f'
 #  nameathost=$'%F{magenta}%n%f@%F{cyan}%m%f'
-  histnum=$'%F{green}%!%f'
+#  histnum=$'%F{green}%!%f'
 
 #  export PROMPT="${newline}${datetime} ${currentdir} ${newline}${nameathost} ${histnum} > "
 
@@ -79,6 +79,7 @@ ENABLE_CORRECTION="true"
   #alias egrep='gegrep'
   alias diff='colordiff'
   alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+  alias dev='ssh sjustin@ca1danube.sba.gov'
 
 # Source plugins
   source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
