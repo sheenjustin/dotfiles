@@ -4,3 +4,6 @@
 [submodule "zsh-syntax-highlighting"]
 	path = zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule ".vim/bundle/sensible"]
+	path = .vim/bundle/sensible
+	url = https://tpope.io/vim/sensible.git

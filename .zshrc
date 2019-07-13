@@ -40,15 +40,6 @@
 # change locale
   export LANG="en_US.utf8"
 
-# Custom Prompt
-#  newline=$'\n'
-#  datetime=$'%@'
-#  currentdir=$'%F{yellow}%~%f'
-#  nameathost=$'%F{magenta}%n%f@%F{cyan}%m%f'
-#  histnum=$'%F{green}%!%f'
-
-#  export PROMPT="${newline}${datetime} ${currentdir} ${newline}${nameathost} ${histnum} > "
-
 # Prettify completion
   zstyle ':completion:*' menu select
   zstyle ':completion:*:descriptions' format '%F{green}%U%d%u%f'
@@ -139,7 +130,6 @@
   export SPACESHIP_TIME_COLOR='white'
   export SPACESHIP_TIME_PREFIX=''
   export SPACESHIP_TIME_FORMAT='%D{%I:%M %p} %F{blue}%!%f'
-#  export SPACESHIP_TIME_12HR=true
 
   autoload -Uz promptinit; promptinit
   prompt spaceship
