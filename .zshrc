@@ -136,4 +136,4 @@
   prompt spaceship
   eval $(dircolors -b $HOME/.config/.dircolors)
 # Allow the use of the z plugin to easily navigate directories
-  . /usr/local/etc/profile.d/z.sh
+. ~/.zsh/plugins/z.sh
