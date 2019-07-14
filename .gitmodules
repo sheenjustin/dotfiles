@@ -4,9 +4,6 @@
 [submodule ".vim/bundle/cf-utils"]
 	path = .vim/bundle/cf-utils
 	url = https://github.com/davejlong/cf-utils.vim
-[submodule ".vim/bundle/indentLine"]
-	path = .vim/bundle/indentLine
-	url = https://github.com/Yggdroot/indentLine
 [submodule ".zsh/plugins/spaceship-prompt"]
 	path = .zsh/plugins/spaceship-prompt
 	url = https://github.com/denysdovhan/spaceship-prompt
@@ -22,3 +19,6 @@
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule ".vim/bundle/indentLine"]
+	path = .vim/bundle/indentLine
+	url = https://github.com/Yggdroot/indentLine

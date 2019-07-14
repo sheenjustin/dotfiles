@@ -1,6 +1,4 @@
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -168,10 +166,10 @@ map <leader>pp :setlocal paste!<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Returns true if paste mode is enabled
 function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
+	if &paste
+		return 'PASTE MODE  '
+	endif
+	return ''
 endfunction
 
 
@@ -180,7 +178,31 @@ endfunction
 " => Plugin Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Enable indentLine
-let g:indentLine_enabled=1
+let g:indentLine_enabled = 1
+set conceallevel=2
+let g:indentLine_conceallevel=1
+let g:indentLine_setColors = 0
+let g:indentLine_bgcolor_term = 202
+let g:indentLine_color_term = 239
+let g:indentLine_char = ' '
+let g:indentLine_leadingSpaceChar = ' '
+let g:indentLine_leadingSpaceEnabled = 1
+
+set listchars=eol:¬,tab:»\ ,trail:~,extends:>,precedes:<,space:·
+set list
+
+hi Whitespace	ctermfg=239
+hi NonText		ctermfg=238
+
+match NonText /\t/
+match Whitespace /\s/
+
+hi WhiteSpaceMol ctermfg=235
+hi WhiteSpaceBol ctermfg=239
+
+match WhiteSpaceMol /\s/
+2match WhiteSpaceBol /^\s\+/
+
 
 "enable airline arrows with powerline fonts
 let g:airline_powerline_fonts=1
