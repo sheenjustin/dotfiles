@@ -1,4 +1,4 @@
-
+source $VIMRUNTIME/defaults.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -88,6 +88,8 @@ set numberwidth=3
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
+"set background=dark
+"colo ron
 syntax enable
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -97,9 +99,8 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 "Colors
-highlight LineNr term=None cterm=NONE ctermfg=White ctermbg=DarkGrey gui=NONE guifg=DarkGrey guibg=NONE
-
-
+"highlight LineNr term=None cterm=NONE ctermfg=White ctermbg=DarkGrey gui=NONE guifg=DarkGrey guibg=NONE
+hi LineNr cterm=NONE ctermfg=250
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GUI related
@@ -110,6 +111,8 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
+hi clear LineNr
+hi LineNr	ctermfg=250
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -132,7 +135,7 @@ set directory=~/.vim/backupdir//
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"User hard tabs always
+"Use hard tabs always
 set noexpandtab
 
 " 1 tab == 4 spaces
@@ -177,18 +180,8 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Enable indentLine
-let g:indentLine_enabled = 1
-set conceallevel=2
-let g:indentLine_conceallevel=1
-let g:indentLine_setColors = 0
-let g:indentLine_bgcolor_term = 202
-let g:indentLine_color_term = 239
-let g:indentLine_char = ' '
-let g:indentLine_leadingSpaceChar = ' '
-let g:indentLine_leadingSpaceEnabled = 1
-
-set listchars=eol:¬,tab:»\ ,trail:~,extends:>,precedes:<,space:·
+set showbreak=↪\ 
+set listchars=eol:↲,tab:»\ ,trail:~,extends:⟩,precedes:⟨,space:⋅
 set list
 
 hi Whitespace	ctermfg=239
@@ -197,15 +190,27 @@ hi NonText		ctermfg=238
 match NonText /\t/
 match Whitespace /\s/
 
-hi WhiteSpaceMol ctermfg=235
+hi WhiteSpaceMol ctermfg=236
 hi WhiteSpaceBol ctermfg=239
 
 match WhiteSpaceMol /\s/
 2match WhiteSpaceBol /^\s\+/
 
+set ts=4 sw=4 noet
+let g:indent_guides_enable_on_vim_startup = 1
+
+let g:indent_guides_guide_size = 1
+
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  guibg=DarkGrey	ctermbg=235 ctermfg=239
+hi IndentGuidesEven guibg=DarkGrey	ctermbg=236 ctermfg=240
+
+" If this highlight group isn't defined it throws an error
+hi Normal			ctermfg=LightGrey
+
 
 "enable airline arrows with powerline fonts
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts = 1
 
 "Status on top. For some reason this doesn't work
 "let g:airline_statusline_ontop=1

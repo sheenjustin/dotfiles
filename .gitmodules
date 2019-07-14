@@ -19,6 +19,6 @@
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule ".vim/bundle/indentLine"]
-	path = .vim/bundle/indentLine
-	url = https://github.com/Yggdroot/indentLine
+[submodule ".vim/bundle/vim-indent-guides"]
+	path = .vim/bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides
