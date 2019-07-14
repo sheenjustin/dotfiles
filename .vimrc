@@ -206,7 +206,7 @@ hi IndentGuidesOdd  guibg=DarkGrey	ctermbg=235 ctermfg=239
 hi IndentGuidesEven guibg=DarkGrey	ctermbg=236 ctermfg=240
 
 " If this highlight group isn't defined it throws an error
-hi Normal			ctermfg=LightGrey
+hi Normal			ctermfg=250
 
 
 "enable airline arrows with powerline fonts
