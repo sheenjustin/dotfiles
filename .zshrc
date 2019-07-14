@@ -3,7 +3,7 @@
   HISTSIZE=1000
   SAVEHIST=1000
 
-  setopt autocd extended_glob append_history extended_history nobeep autolist histignorespace autopushd
+  setopt autocd extended_glob append_history extended_history nobeep autolist histignorespace autopushd correct pushdignoredups
   bindkey -e
 # End of lines configured by zsh-newuser-install
 
@@ -15,7 +15,7 @@
 # End of lines added by compinstall
 
 # autocomplete
-  ENABLE_CORRECTION="true"
+  ENABLE_CORRECTION=true
 
 # Delete Keybind
   bindkey    "^[[3~"          delete-char
