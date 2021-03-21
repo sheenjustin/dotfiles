@@ -63,6 +63,8 @@
   alias ....='cd ../../../'
   alias rm='rm -i'
   alias mv='mv -i'
+  alias v='vim'
+  alias vi='vim'
   alias vir='vim -R'
   alias vid='vim -d'
   alias ggrep='ggrep --exclude-dir={save,checkedout,experiments,flex} --color=auto' 
