@@ -72,6 +72,8 @@
   alias diff='colordiff'
   alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
   alias dev='ssh sjustin@ca1danube.sba.gov'
+  alias sudo='sudo '
+  alias pls='sudo $(fc -ln -1)'
 
 # Source plugins
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -134,6 +136,11 @@
 
   autoload -Uz promptinit; promptinit
   prompt spaceship
-  eval $(dircolors -b $HOME/.config/.dircolors)
+#  eval $(dircolors -b $HOME/.config/.dircolors)
 # Allow the use of the z plugin to easily navigate directories
 . ~/.zsh/plugins/z.sh
+
+# NVM install
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
