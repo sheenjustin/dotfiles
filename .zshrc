@@ -46,6 +46,9 @@
   zstyle ':completion:*:descriptions' format '%F{green}%U%d%u%f'
   zstyle ':completion:*:warnings' format '%F{yellow}Sorry, no matches for: %d%f'
 
+if (( $+commands[exa] )); then
+	alias ls='exa'
+fi
 # Ease of use Alias
   alias install='sudo apt install'
   alias update='sudo apt update'
