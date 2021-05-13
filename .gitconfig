@@ -1,3 +1,5 @@
 [user]
 	email = sheen@sheenjustin.com
 	name = Sheen Justin
+[core]
+	editor = vim
