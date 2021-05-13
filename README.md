@@ -5,6 +5,8 @@ sudo apt install git
 sudo apt install zsh
 chsh -s /usr/bin/zsh
 
+wget https://raw.githubusercontent.com/sheenjustin/dotfiles/master/setup.sh
+
 zsh ./setup.sh
 ```
 
