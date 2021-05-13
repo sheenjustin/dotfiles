@@ -1,6 +1,7 @@
 https://www.atlassian.com/git/tutorials/dotfiles
 
 Prerequisites:
+
 Git and zsh installed. User shell changed to zsh.
 
 ```
