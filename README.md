@@ -16,6 +16,7 @@ wget https://raw.githubusercontent.com/sheenjustin/dotfiles/master/setup.sh
 zsh ./setup.sh
 ```
 
+setup.sh:
 ```
 git clone --bare https://github.com/sheenjustin/dotfiles/ $HOME/.cfg
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
