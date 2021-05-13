@@ -1,13 +1,15 @@
 https://www.atlassian.com/git/tutorials/dotfiles
 
-Prerequisites: git and zsh installed. User shell changed to zsh.
+Prerequisites:
+Git and zsh installed. User shell changed to zsh.
+
 ```
 sudo apt install git
 sudo apt install zsh
 chsh -s /usr/bin/zsh
 ```
-Install:
 
+Install:
 ```
 wget https://raw.githubusercontent.com/sheenjustin/dotfiles/master/setup.sh
 
