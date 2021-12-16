@@ -14,10 +14,12 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
+let mapleader = " "
 
 " Fast saving
 nmap <leader>w :w!<cr>
+
+nmap <leader>q :q<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -211,6 +213,18 @@ hi Normal			ctermfg=250
 
 "enable airline arrows with powerline fonts
 let g:airline_powerline_fonts = 1
+
+let g:airline_theme='base16_monokai'
+
+" Vim Git-Gutter settings
+set signcolumn=yes
+highlight! link SignColumn LineNr
+highlight SignColumn guibg=DarkGrey ctermbg=234
+
+highlight GitGutterAdd    guifg=#A6E22E ctermfg=2
+highlight GitGutterChange guifg=#66D9EF ctermfg=3
+highlight GitGutterDelete guifg=#F92672 ctermfg=1
+
 
 "Status on top. For some reason this doesn't work
 "let g:airline_statusline_ontop=1
