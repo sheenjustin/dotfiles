@@ -33,7 +33,7 @@
   done
 
 # add ~/bin to $path
-  export PATH=$PATH':'$HOME'/bin:/opt/csw/bin'
+  export PATH=$PATH':'$HOME'/bin:/opt/csw/bin:'$HOME'/.local/bin'
 
 # Add Color
   export TERM='xterm-color'
@@ -79,6 +79,8 @@ fi
   alias dev='ssh sjustin@ca1danube.sba.gov'
   alias sudo='sudo '
   alias pls='sudo $(fc -ln -1)'
+  alias docs='cd /opt/iplanet/servers/docs/'
+  alias staging='cd /opt/san/gitdocs/staging'
 
 # Source plugins
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
