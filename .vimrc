@@ -1,4 +1,4 @@
-source $VIMRUNTIME/defaults.vim
+"source $VIMRUNTIME/defaults.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -183,8 +183,8 @@ endfunction
 " => Plugin Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set showbreak=↪\ 
-set listchars=eol:↲,tab:»\ ,trail:~,extends:⟩,precedes:⟨,space:⋅
-set list
+"set listchars=eol:↲,tab:»\ ,trail:~,extends:⟩,precedes:⟨,space:⋅
+"set list
 
 hi Whitespace	ctermfg=239
 hi NonText		ctermfg=238
