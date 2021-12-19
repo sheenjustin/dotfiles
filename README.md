@@ -13,7 +13,7 @@ Install:
 ```
 wget https://raw.githubusercontent.com/sheenjustin/dotfiles/master/setup.sh
 
-zsh ./setup.sh
+zsh ./setup.zsh
 ```
 
 setup.sh:
