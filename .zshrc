@@ -46,9 +46,6 @@
   zstyle ':completion:*:descriptions' format '%F{green}%U%d%u%f'
   zstyle ':completion:*:warnings' format '%F{yellow}Sorry, no matches for: %d%f'
 
-if (( $+commands[exa] )); then
-	alias ls='exa'
-fi
 # Ease of use Alias
   alias install='sudo apt install'
   alias update='sudo apt update'
@@ -81,6 +78,11 @@ fi
   alias pls='sudo $(fc -ln -1)'
   alias docs='cd /opt/iplanet/servers/docs/'
   alias staging='cd /opt/san/gitdocs/staging'
+
+  if (( $+commands[exa] )); then
+    alias ls='exa -lh --icons'
+	alias ll='ls -a'
+  fi
 
 # Source plugins
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
