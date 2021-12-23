@@ -2,4 +2,21 @@
 	email = sheen@sheenjustin.com
 	name = Sheen Justin
 [core]
-	editor = vim
+	editor = code --wait
+	autocrlf = false
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[alias]
+	st = status
+[pull]
+	rebase = true
+[help]
+	autocorrect = 1
+[fetch]
+	prune = true

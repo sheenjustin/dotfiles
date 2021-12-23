@@ -10,6 +10,11 @@ if type -q exa
 	alias ll="ls -a"
 end
 
+if type -q nvim
+	alias vi="nvim"
+	alias vim="nvim"
+end
+
 alias dev="ssh sjustin@ca1danube.sba.gov"
 
 function config

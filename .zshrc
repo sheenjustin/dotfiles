@@ -84,6 +84,12 @@
 	alias ll='ls -a'
   fi
 
+  if (( $+commands[nvim] )); then
+    alias v='nvim'
+	alias vi='nvim'
+	alias vim='nvim'
+  fi
+
 # Source plugins
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
