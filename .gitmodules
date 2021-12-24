@@ -38,5 +38,7 @@
 	path = .vim/bundle/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe
 [submodule "/home/sheen/.zsh/plugins/powerlevel10k"]
-	path = /home/sheen/.zsh/plugins/powerlevel10k
+	path =.zsh/plugins/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+	shallow = true
+	depth = 1
