@@ -4,6 +4,7 @@
 [core]
 	editor = code --wait
 	autocrlf = false
+	preloadIndex = true
 [merge]
 	tool = vscode
 [mergetool "vscode"]

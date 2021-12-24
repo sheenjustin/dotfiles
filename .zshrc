@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Lines configured by zsh-newuser-install
   HISTFILE=~/.zsh/.histfile
   HISTSIZE=1000
@@ -33,10 +40,10 @@
   done
 
 # add ~/bin to $path
-  export PATH=$PATH':'$HOME'/bin:/opt/csw/bin:'$HOME'/.local/bin'
+  export PATH=$PATH':'$HOME'/bin:/opt/csw/bin:'$HOME'/.local/bin:'$HOME'/.cargo/bin'
 
 # Add Color
-  export TERM='xterm-color'
+  #export TERM='xterm-color'
 
 # change locale
   export LANG="en_US.utf8"
@@ -93,65 +100,6 @@
 # Source plugins
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
- # Spaceship Prompt
-
-  SPACESHIP_PROMPT_ORDER=(
-	user			# Username section
-	host			# Hostname section
-	dir				# Current directory section
-	git				# Git section (git_branch + git_status)
-	hg				# Mercurial section (hg_branch  + hg_status)
-	package			# Package version
-	node			# Node.js section
-	ruby			# Ruby section
-	elixir			# Elixir section
-	xcode			# Xcode section
-	swift			# Swift section
-	golang			# Go section
-	php				# PHP section
-	rust			# Rust section
-	haskell			# Haskell Stack section
-	julia			# Julia section
-	docker			# Docker section
-	aws				# Amazon Web Services section
-	venv			# virtualenv section
-	conda			# conda virtualenv section
-	pyenv			# Pyenv section
-	dotnet			# .NET section
-	ember			# Ember.js section
-	kubecontext		# Kubectl context section
-	terraform		# Terraform workspace section
-	exec_time		# Execution time
-	line_sep		# Line break
-	time			# Time stamps section
-	battery			# Battery level and status
-	vi_mode			# Vi-mode indicator
-	jobs			# Background jobs indicator
-	exit_code		# Exit code section
-	char			# Prompt character
-  )
-  export SPACESHIP_CHAR_SYMBOL='❯'
-  export SPACESHIP_CHAR_SYMBOL_ROOT='#'
-  export SPACESHIP_CHAR_SUFFIX=' '
-
-  export SPACESHIP_USER_COLOR='magenta'
-  export SPACESHIP_USER_PREFIX='as '
-  export SPACESHIP_USER_SUFFIX=''
-
-  export SPACESHIP_HOST_PREFIX='@'
-  export SPACESHIP_HOST_COLOR_SSH='cyan'
-
-  export SPACESHIP_DIR_COLOR='yellow'
-  export SPACESHIP_DIR_PREFIX=''
-
-  export SPACESHIP_TIME_SHOW=true
-  export SPACESHIP_TIME_COLOR='white'
-  export SPACESHIP_TIME_PREFIX=''
-  export SPACESHIP_TIME_FORMAT='%D{%I:%M %p} %F{blue}%!%f'
-
-  autoload -Uz promptinit; promptinit
-  prompt spaceship
-#  eval $(dircolors -b $HOME/.config/.dircolors)
 # Allow the use of the z plugin to easily navigate directories
 . ~/.zsh/plugins/z.sh
 
@@ -159,3 +107,8 @@
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
