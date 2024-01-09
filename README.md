@@ -11,7 +11,7 @@ chsh -s /usr/bin/zsh
 
 Install:
 ```
-wget https://raw.githubusercontent.com/sheenjustin/dotfiles/master/setup.sh
+wget https://raw.githubusercontent.com/sheenjustin/dotfiles/master/setup.zsh
 
 zsh ./setup.zsh
 ```

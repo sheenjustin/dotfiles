@@ -14,7 +14,17 @@
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [alias]
-	st = status
+	st = checkout staging
+	co = checkout
+	ci = commit
+	br = branch
+	nb = checkout -b
+	p = !git push -u origin $(git rev-parse --abbrev-ref HEAD)
+	last = log -1 HEAD
+	cm = commit -m
+	cma = commit -a -m
+	rb = rebase --interactive origin/staging
+	dev = checkout development
 [pull]
 	rebase = true
 [help]

@@ -86,8 +86,8 @@ fi
   alias docs='cd /opt/iplanet/servers/docs/'
   alias staging='cd /opt/san/gitdocs/staging'
 
-  if (( $+commands[exa] )); then
-    alias ls='exa -lh --icons'
+  if (( $+commands[eza] )); then
+    alias ls='eza -lh --icons'
 	alias ll='ls -a'
   fi
 
