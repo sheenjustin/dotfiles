@@ -91,6 +91,14 @@ fi
 	alias ll='ls -a'
   fi
 
+  if (( $+commands[batcat] )); then
+    alias cat=batcat
+  fi
+  
+  if (( $+commands[bat] )); then
+    alias cat=bat
+  fi
+
   if (( $+commands[nvim] )); then
     alias v='nvim'
 	alias vi='nvim'
