@@ -16,11 +16,10 @@ wget https://raw.githubusercontent.com/sheenjustin/dotfiles/master/setup.zsh
 zsh ./setup.zsh
 ```
 
-setup.sh:
+setup.zsh:
 ```
 git clone --bare https://github.com/sheenjustin/dotfiles/ $HOME/.cfg
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 config checkout
-config submodule init
-config submodule update
+config submodule update --init --recursive
 ```
