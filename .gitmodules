@@ -34,6 +34,9 @@
 [submodule ".vim/bundle/vim-fish"]
 	path = .vim/bundle/vim-fish
 	url = https://github.com/dag/vim-fish
+[submodule ".vim/bundle/vim-monokai-tasty"]
+	path = .vim/bundle/vim-monokai-tasty
+	url = https://github.com/patstockwell/vim-monokai-tasty
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/bundle/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe
