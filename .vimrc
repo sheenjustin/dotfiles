@@ -127,11 +127,11 @@ hi LineNr	ctermfg=250
 "set nowb
 "set noswapfile
 
-set undodir=~/.vim/undodir//
+set undodir=~/.vim/undodir/
 set undofile
 
-set backupdir=~/.vim/backupdir//
-set directory=~/.vim/backupdir//
+set backupdir=~/.vim/backupdir/
+set directory=~/.vim/backupdir/
 
 
 
