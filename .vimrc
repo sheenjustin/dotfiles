@@ -104,6 +104,8 @@ set ffs=unix,dos,mac
 "highlight LineNr term=None cterm=NONE ctermfg=White ctermbg=DarkGrey gui=NONE guifg=DarkGrey guibg=NONE
 hi LineNr cterm=NONE ctermfg=250
 
+colorscheme sonokai
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GUI related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
