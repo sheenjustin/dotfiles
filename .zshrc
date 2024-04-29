@@ -47,6 +47,7 @@ zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert always
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 alias j=cdr
+
 # add ~/bin to $path
   export PATH=$PATH':'$HOME'/.local/bin:'$HOME'/.cargo/bin'
 
@@ -121,11 +122,7 @@ alias j=cdr
 
 # Source plugins
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Allow the use of the z plugin to easily navigate directories
-. ~/.zsh/plugins/z.sh
-
-source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
+  source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
