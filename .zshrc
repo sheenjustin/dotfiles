@@ -107,11 +107,16 @@ alias j=cdr
   if (( $+commands[bat] )); then
     alias cat=bat
   fi
+  
+  if (( $+commands[vim] )); then
+    export EDITOR=$(which vim)
+  fi
 
   if (( $+commands[nvim] )); then
     alias v='nvim'
 	alias vi='nvim'
 	alias vim='nvim'
+    export EDITOR=$(which nvim)
   fi
 
   if (( $+commands[dnf] )); then
