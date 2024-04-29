@@ -123,6 +123,8 @@ alias j=cdr
 # Source plugins
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
-
+  if (( $+commands[zoxide] )); then
+    eval "$(zoxide init --cmd j zsh)"
+  fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
