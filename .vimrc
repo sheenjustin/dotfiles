@@ -25,8 +25,6 @@ nmap <leader>q :q<cr>
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -82,7 +80,7 @@ set tm=500
 
 " Add numbers on the left
 set nu
-set numberwidth=3
+set numberwidth=4
 
 
 
@@ -155,7 +153,6 @@ set si "Smart indent
 set wrap "Wrap lines
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -179,7 +176,6 @@ function! HasPaste()
 endfunction
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -197,7 +193,7 @@ hi WhiteSpaceMol ctermfg=236
 hi WhiteSpaceBol ctermfg=239
 
 match WhiteSpaceMol /\s/
-2match WhiteSpaceBol /^\s\+/
+match WhiteSpaceBol /^\s\+/
 
 set ts=4 sw=4 noet
 let g:indent_guides_enable_on_vim_startup = 1

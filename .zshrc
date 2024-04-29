@@ -10,7 +10,8 @@ fi
   HISTSIZE=1000
   SAVEHIST=1000
 
-  setopt autocd extended_glob append_history extended_history nobeep autolist histignorespace autopushd correct pushdignoredups
+  setopt autocd extended_glob append_history extended_history nobeep autolist 
+  setopt histignorespace autopushd correct pushdignoredups complete_in_word
   bindkey -e
 # End of lines configured by zsh-newuser-install
 
@@ -39,8 +40,15 @@ fi
 	autoload $file:t:r
   done
 
+# Autojump implementation
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert always
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+alias j=cdr
 # add ~/bin to $path
-  export PATH=$PATH':'$HOME'/bin:/opt/csw/bin:'$HOME'/.local/bin:'$HOME'/.cargo/bin'
+  export PATH=$PATH':'$HOME'/.local/bin:'$HOME'/.cargo/bin'
 
 # Add Color
   #export TERM='xterm-color'
@@ -105,16 +113,17 @@ fi
 	alias vim='nvim'
   fi
 
+  if (( $+commands[dnf] )); then
+  	alias install='sudo dnf install'
+  	alias update='sudo dnf upgrade'
+  	alias upgrade='sudo dnf upgrade'
+  fi
+
 # Source plugins
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Allow the use of the z plugin to easily navigate directories
 . ~/.zsh/plugins/z.sh
-
-# NVM install
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
 
