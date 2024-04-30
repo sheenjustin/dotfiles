@@ -40,13 +40,12 @@ fi
 	autoload $file:t:r
   done
 
-# Autojump implementation
-autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-add-zsh-hook chpwd chpwd_recent_dirs
-zstyle ':chpwd:*' recent-dirs-default yes
-zstyle ':completion:*' recent-dirs-insert always
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
-alias j=cdr
+# Native ZSH Autojump implementation
+  autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+  add-zsh-hook chpwd chpwd_recent_dirs
+  zstyle ':chpwd:*' recent-dirs-default yes
+  zstyle ':completion:*' recent-dirs-insert always
+  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 # add ~/bin to $path
   export PATH=$PATH':'$HOME'/.local/bin:'$HOME'/.cargo/bin'
@@ -62,38 +61,38 @@ alias j=cdr
   zstyle ':completion:*:descriptions' format '%F{green}%U%d%u%f'
   zstyle ':completion:*:warnings' format '%F{yellow}Sorry, no matches for: %d%f'
 
-# Ease of use Alias
-  alias install='sudo apt install'
-  alias update='sudo apt update'
-  alias upgrade='update && sudo apt upgrade'
-  alias ant='/usr/local/bin/apache-ant-1.9.6/bin/ant'
+# Ease of use aliases
   alias tail='tail -300'
   alias tailf='tail -f'
+
   alias ls=' ls -lh --color'
   alias ll='ls -A'
   alias lt='ll -t'
   alias lsd='ls -d */'
+
   alias echo='echo -e'
-  alias cp='cp -pi'
+
   alias ...='cd ../../'
   alias ....='cd ../../../'
+
+  alias cp='cp -pi'
   alias rm='rm -i'
   alias mv='mv -i'
+
   alias v='vim'
   alias vi='vim'
   alias vir='vim -R'
   alias vid='vim -d'
-  alias ggrep='ggrep --exclude-dir={save,checkedout,experiments,flex} --color=auto' 
-  #alias grep='ggrep'
-  alias gegrep='gegrep --exclude-dir={save,checkedout,experiments,flex} --color=auto'
-  #alias egrep='gegrep'
+
   alias diff='colordiff'
+
   alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
   alias dev='ssh sjustin@ca1danube.sba.gov'
   alias sudo='sudo '
   alias pls='sudo $(fc -ln -1)'
+
   alias docs='cd /opt/iplanet/servers/docs/'
-  alias staging='cd /opt/san/gitdocs/staging'
+  alias ghe='GH_HOST=ca1gilah.sba.gov gh'
 
   if (( $+commands[eza] )); then
     alias ls='eza -lh --icons'
@@ -119,6 +118,12 @@ alias j=cdr
     export EDITOR=$(which nvim)
   fi
 
+  if (( $+commands[apt] )); then
+    alias install='sudo apt install'
+    alias update='sudo apt update'
+    alias upgrade='update && sudo apt upgrade'
+  fi
+
   if (( $+commands[dnf] )); then
   	alias install='sudo dnf install'
   	alias update='sudo dnf upgrade'
@@ -130,6 +135,9 @@ alias j=cdr
   source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
   if (( $+commands[zoxide] )); then
     eval "$(zoxide init --cmd j zsh)"
+  else
+	alias j=cdr # fallback to native zsh autojump
   fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh

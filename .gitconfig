@@ -14,7 +14,7 @@
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
 [alias]
-	st = checkout staging
+	st = status
 	co = checkout
 	ci = commit
 	br = branch
@@ -25,6 +25,7 @@
 	cma = commit -a -m
 	rb = rebase --interactive origin/staging
 	dev = checkout development
+	lg = log --graph --pretty=format:'%Cred%h %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 [pull]
 	rebase = true
 [help]
