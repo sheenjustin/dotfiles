@@ -225,8 +225,39 @@ highlight GitGutterDelete guifg=#F92672 ctermfg=1
 
 "Status on top. For some reason this doesn't work
 "let g:airline_statusline_ontop=1
+"call pathogen#infect()
+"call pathogen#helptags()
 
-"Pathogen Call
-call pathogen#infect()
-call pathogen#helptags()
+let data_dir = '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'patstockwell/vim-monokai-tasty'
+
+Plug 'davejlong/cf-utils.vim'
+Plug 'dag/vim-fish'
+
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+call plug#end()
+
 colorscheme vim-monokai-tasty
+
+if has('nvim')
+	lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+endif
