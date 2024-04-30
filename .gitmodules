@@ -6,4 +6,3 @@
 	url = https://github.com/romkatv/powerlevel10k.git
 	shallow = true
 	depth = 1
-	branch = release

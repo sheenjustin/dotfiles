@@ -246,9 +246,9 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'patstockwell/vim-monokai-tasty'
+Plug 'sheenjustin/vim-monokai-tasty'
 
-Plug 'davejlong/cf-utils.vim'
+Plug 'sheenjustin/cf-utils.vim'
 Plug 'dag/vim-fish'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
