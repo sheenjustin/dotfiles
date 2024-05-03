@@ -32,3 +32,4 @@ elend_prod/
 *.swp
 *.swo
 .cfg
+.histfile
