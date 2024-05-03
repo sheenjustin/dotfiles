@@ -41,9 +41,6 @@ set ruler
 " Height of the command bar
 set cmdheight=2
 
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -252,12 +249,17 @@ Plug 'sheenjustin/cf-utils.vim'
 Plug 'dag/vim-fish'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+if has('nvim')
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
 
 call plug#end()
-
-colorscheme vim-monokai-tasty
 
 if has('nvim')
 	lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
 endif
+
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+colorscheme vim-monokai-tasty
+
