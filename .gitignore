@@ -33,3 +33,6 @@ elend_prod/
 *.swo
 .cfg
 .histfile
+
+.vim/backupdir/
+.vim/undodir/
