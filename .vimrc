@@ -33,8 +33,9 @@ set so=7
 
 " Turn on the Wild menu
 set wildmenu
-set wildmode=list:longest,full
-
+if !has('nvim')
+	set wildmode=list:longest,list:full
+endif
 "Always show current position
 set ruler
 
