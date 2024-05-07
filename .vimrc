@@ -246,6 +246,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheenjustin/vim-monokai-tasty'
 
+Plug 'icedman/vim-textmate'
+
 Plug 'sheenjustin/cf-utils.vim'
 Plug 'dag/vim-fish'
 
