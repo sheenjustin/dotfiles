@@ -17,9 +17,9 @@ set autoread
 let mapleader = " "
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>s :w!<cr>
 
-nmap <leader>q :q<cr>
+nmap <leader>l :q<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -86,8 +86,6 @@ set numberwidth=4
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-"set background=dark
-"colo ron
 syntax enable
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -180,7 +178,7 @@ endfunction
 set showbreak=↪\ 
 "set listchars=eol:↲,tab:»\ ,trail:~,extends:⟩,precedes:⟨,space:⋅
 "set list
-
+set clipboard+=unnamedplus
 hi Whitespace	ctermfg=239
 hi NonText		ctermfg=238
 
@@ -220,12 +218,6 @@ highlight GitGutterAdd    guifg=#A6E22E ctermfg=2
 highlight GitGutterChange guifg=#66D9EF ctermfg=3
 highlight GitGutterDelete guifg=#F92672 ctermfg=1
 
-
-"Status on top. For some reason this doesn't work
-"let g:airline_statusline_ontop=1
-"call pathogen#infect()
-"call pathogen#helptags()
-
 let data_dir = '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -246,8 +238,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheenjustin/vim-monokai-tasty'
 
-Plug 'icedman/vim-textmate'
-
 Plug 'sheenjustin/cf-utils.vim'
 Plug 'dag/vim-fish'
 
@@ -264,5 +254,5 @@ if has('nvim')
 endif
 
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-colorscheme vim-monokai-tasty
 
+colorscheme vim-monokai-tasty

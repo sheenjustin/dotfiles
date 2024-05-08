@@ -130,6 +130,9 @@ fi
   	alias upgrade='sudo dnf upgrade'
   fi
 
+  if (( $+commands[fzf] )); then
+    eval "$(fzf --zsh)"
+  fi
 # Source plugins
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
