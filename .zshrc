@@ -87,7 +87,6 @@ fi
   alias diff='colordiff'
 
   alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-  alias dev='ssh sjustin@ca1danube.sba.gov'
   alias sudo='sudo '
   alias pls='sudo $(fc -ln -1)'
 
@@ -144,7 +143,7 @@ fi
 
 # Make sure ssh agent is running
 if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval "$(ssh-agent -s)"
+    eval "$(ssh-agent -s)" &> /dev/null
 	find ~/.ssh/ -type f -exec grep -l "PRIVATE" {} \; | xargs ssh-add &> /dev/null
 fi
 
