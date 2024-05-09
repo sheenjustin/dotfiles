@@ -242,7 +242,7 @@ Plug 'sheenjustin/cf-utils.vim'
 Plug 'dag/vim-fish'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 if has('nvim')
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
