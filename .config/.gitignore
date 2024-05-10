@@ -1,0 +1,6 @@
+*
+
+!.gitignore
+!.dircolors
+!.p10.zsh
+!nvim
