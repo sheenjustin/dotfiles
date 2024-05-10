@@ -129,9 +129,6 @@ fi
   	alias upgrade='sudo dnf upgrade'
   fi
 
-  if (( $+commands[fzf] )); then
-    eval "$(fzf --zsh)"
-  fi
 # Source plugins
   source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
@@ -144,7 +141,6 @@ fi
 # Make sure ssh agent is running
 if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval "$(ssh-agent -s)" &> /dev/null
-	find ~/.ssh/ -type f -exec grep -l "PRIVATE" {} \; | xargs ssh-add &> /dev/null
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

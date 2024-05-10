@@ -1,38 +1,29 @@
-# Get rid of save, checkedout, experiments, and stage directories.
-**save/
-**checkedout/
-**experiments/
-stage*/
-elend_prod/
-**flex/
+.CommandBox/
 
-# Files with dev names
-*steve*
-*Steve*
-*asad*
-*Asad*
-*nelli*
-*Nelli*
-*sheen*
-*Sheen*
-*robert*
-*Robert*
-*katha*
-*Katha*
-*vidya*
-*Vidya*
+.bash_history
+.bash_logout
 
-# Backup files
-*.backup*
-*BACKUP*
+.cache/
+.cargo/
+.cfg/
 
-# Unused File extensions
-*.bak
-*.BAK
-*.swp
-*.swo
-.cfg
-.histfile
+.docker/
+.dotnet/
+
+.java/
+
+.lesshst
+.local/
+
+.npm/
+
+.rustup/
+
+.sudo_as_admin_successful
 
 .vim/backupdir/
 .vim/undodir/
+.vim/plugged/
+
+.vscode-server/
+.vscode-remote-containers/
