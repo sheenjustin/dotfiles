@@ -1,1 +1,1 @@
-/home/sheen/.vimrc
+../.vimrc
