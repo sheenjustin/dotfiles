@@ -18,8 +18,10 @@ let mapleader = " "
 
 " Fast saving
 nmap <leader>s :w!<cr>
-
 nmap <leader>l :q<cr>
+
+" Using tpope/vim-commentary
+nmap <leader>/ gcc
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -234,8 +236,11 @@ Plug 'tpope/vim-commentary'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+if !has('nvim')
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+endif
+
 Plug 'sheenjustin/vim-monokai-tasty'
 
 Plug 'sheenjustin/cf-utils.vim'
@@ -243,16 +248,20 @@ Plug 'dag/vim-fish'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 if has('nvim')
+	Plug 'nvim-lualine/lualine.nvim'
+	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 
 call plug#end()
 
-if has('nvim')
-	lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
-endif
-
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
 colorscheme vim-monokai-tasty
+
+if has('nvim')
+	lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+	lua require('lualine').setup({ options={theme='powerline_dark'}})
+endif
