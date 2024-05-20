@@ -9,10 +9,16 @@ fi
   HISTFILE=~/.zsh/.histfile
   HISTSIZE=1000
   SAVEHIST=1000
+  HISTDUP=erase
 
-  setopt autocd extended_glob append_history extended_history nobeep autolist 
-  setopt histignorespace autopushd correct pushdignoredups complete_in_word
+  setopt autocd extended_glob nobeep autolist 
+  setopt autopushd correct pushdignoredups complete_in_word
+  setopt append_history extended_history sharehistory
+  setopt hist_ignore_space hist_ignore_all_dups hist_save_no_dups hist_ignore_dups hist_find_no_dups
   bindkey -e
+  bindkey '^p' history-search-backwards
+  bindkey '^n' history-search-forwards
+
 # End of lines configured by zsh-newuser-install
 
 # The following lines were added by compinstall
