@@ -96,7 +96,6 @@ fi
   alias sudo='sudo '
   alias pls='sudo $(fc -ln -1)'
 
-  alias docs='cd /opt/iplanet/servers/docs/'
   alias ghe='GH_HOST=ca1gilah.sba.gov gh'
 
   if (( $+commands[eza] )); then
