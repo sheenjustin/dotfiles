@@ -120,6 +120,7 @@ fi
 	alias vi='nvim'
 	alias vim='nvim'
     export EDITOR=$(which nvim)
+	export SUDO_EDITOR=$(which nvim)
   fi
 
   if (( $+commands[apt] )); then
