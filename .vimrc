@@ -253,6 +253,7 @@ if has('nvim')
 	Plug 'nvim-lualine/lualine.nvim'
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'alexghergh/nvim-tmux-navigation'
 endif
 
 call plug#end()
