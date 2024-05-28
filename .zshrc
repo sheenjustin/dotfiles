@@ -32,9 +32,6 @@ ENABLE_CORRECTION=true
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 
-# Umask fix
-umask 002
-
 # Add custom functions
 fpath=(~/.zsh/funcs $fpath)
 fpath=(~/.zsh/plugins $fpath)
@@ -50,11 +47,11 @@ zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert always
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
-# add ~/bin to $path
-export PATH=$PATH':'$HOME'/.local/bin:'$HOME'/.cargo/bin'
+# Umask fix
+umask 002
 
-# Add Color
-#export TERM='xterm-color'
+# add to $PATH
+export PATH=$PATH':'$HOME'/.local/bin:'$HOME'/.cargo/bin'
 
 # change locale
 export LANG="en_US.utf8"
@@ -86,8 +83,7 @@ alias v='vim'
 alias vi='vim'
 alias vir='vim -R'
 alias vid='vim -d'
-
-alias diff='colordiff'
+alias visudo='sudo -e'
 
 alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias sudo='sudo '
@@ -95,9 +91,11 @@ alias pls='sudo $(fc -ln -1)'
 
 alias ghe='GH_HOST=ca1gilah.sba.gov gh'
 
+# Customizations for if different commands are installed
 if (( $+commands[eza] )); then
 	alias ls='eza -lh --icons'
 	alias ll='ls -a'
+	alias tree='exa --tree'
 fi
 
 if (( $+commands[batcat] )); then
@@ -132,6 +130,12 @@ if (( $+commands[dnf] )); then
 	alias upgrade='sudo dnf upgrade'
 fi
 
+# Source fzf if installed
+if (( $+commands[fzf] )); then
+	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+	alias f='fzf'
+fi
+
 # Source plugins
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
@@ -144,11 +148,6 @@ fi
 # Make sure ssh agent is running
 if [ -z "$SSH_AUTH_SOCK" ]; then
 	eval "$(ssh-agent -s)" &>/dev/null
-fi
-
-# Source fzf if installed
-if (( $+commands[fzf] )); then
-	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
