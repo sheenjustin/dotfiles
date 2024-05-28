@@ -21,6 +21,8 @@
 
 .sudo_as_admin_successful
 
+.tmux/
+
 .vim/backupdir/
 .vim/undodir/
 .vim/plugged/
