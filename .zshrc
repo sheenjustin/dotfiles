@@ -146,7 +146,10 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 	eval "$(ssh-agent -s)" &>/dev/null
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Source fzf if installed
+if (( $+commands[fzf] )); then
+	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
