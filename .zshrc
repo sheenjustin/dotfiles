@@ -158,6 +158,3 @@ fi
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
-if (( $+commands[tmux] )) && [[ -o interactive ]] && [ -z "$TMUX" ]; then
-	tmux
-fi
