@@ -157,6 +157,7 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
 
-if (( $+commands[tmux] )) && [[ -o interactive ]] && [ ! -n "$TMUX" ]; then
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+if (( $+commands[tmux] )) && [[ -o interactive ]] && [ -z "$TMUX" ]; then
 	tmux
 fi
