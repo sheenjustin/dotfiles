@@ -99,7 +99,7 @@ alias ghe='GH_HOST=ca1gilah.sba.gov gh'
 if (( $+commands[eza] )); then
 	alias ls='eza -lh --icons'
 	alias ll='ls -a'
-	alias tree='exa --tree'
+	alias tree='eza --tree'
 fi
 
 if (( $+commands[batcat] )); then
