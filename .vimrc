@@ -221,6 +221,7 @@ highlight GitGutterChange guifg=#66D9EF ctermfg=3
 highlight GitGutterDelete guifg=#F92672 ctermfg=1
 
 let data_dir = '~/.vim'
+set viminfo+=n~/.vim/viminfo
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC

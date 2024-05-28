@@ -20,11 +20,21 @@ bindkey -e
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '${HOME}/.zshrc'
+
+# Native ZSH Autojump implementation
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':chpwd:*' recent-dirs-file "${HOME}/.zsh/.chpwd-recent-dirs"
+zstyle ':completion:*' recent-dirs-insert always
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' cache-path "~/.cache/.zcompcache" 
 autoload -Uz compinit
 
-compinit
+compinit -C -d "${HOME}/.zsh/.zcompdump"
 # End of lines added by compinstall
-
+export LESSHISTFILE="${HOME}/.config/less/history"
 # autocomplete
 ENABLE_CORRECTION=true
 
@@ -40,12 +50,6 @@ for file in ~/.zsh/funcs/*; do
 	autoload $file:t:r
 done
 
-# Native ZSH Autojump implementation
-autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-add-zsh-hook chpwd chpwd_recent_dirs
-zstyle ':chpwd:*' recent-dirs-default yes
-zstyle ':completion:*' recent-dirs-insert always
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 # Umask fix
 umask 002
