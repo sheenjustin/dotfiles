@@ -50,7 +50,6 @@ for file in ~/.zsh/funcs/*; do
 	autoload $file:t:r
 done
 
-
 # Umask fix
 umask 002
 
@@ -60,6 +59,7 @@ export PATH=$PATH':'$HOME'/.local/bin:'$HOME'/.cargo/bin'
 # change locale
 export LANG="en_US.utf8"
 
+# fix for tmux characters
 export TERM="screen-256color"
 
 # Prettify completion
@@ -85,6 +85,7 @@ alias cp='cp -pi'
 alias rm='rm -i'
 alias mv='mv -i'
 
+alias f='v'
 alias v='vim'
 alias vi='vim'
 alias vir='vim -R'
@@ -143,8 +144,14 @@ if (( $+commands[fzf] )); then
 fi
 
 # Source plugins
-source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
+if [[ -f ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+	source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+if [[ -f ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+	source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
+fi
+
 if (( $+commands[zoxide] )); then
 	eval "$(zoxide init --cmd j zsh)"
 else
