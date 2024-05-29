@@ -59,9 +59,6 @@ export PATH=$PATH':'$HOME'/.local/bin:'$HOME'/.cargo/bin'
 # change locale
 export LANG="en_US.utf8"
 
-# fix for tmux characters
-export TERM="screen-256color"
-
 # Prettify completion
 zstyle ':completion:*' menu select
 zstyle ':completion:*:descriptions' format '%F{green}%U%d%u%f'
