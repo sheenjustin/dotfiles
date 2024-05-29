@@ -85,7 +85,6 @@ alias cp='cp -pi'
 alias rm='rm -i'
 alias mv='mv -i'
 
-alias f='v'
 alias v='vim'
 alias vi='vim'
 alias vir='vim -R'
@@ -153,7 +152,7 @@ if [[ -f ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme ]]; then
 fi
 
 if (( $+commands[zoxide] )); then
-	eval "$(zoxide init --cmd j zsh)"
+	eval "$(zoxide init --cmd j zsh)" &>/dev/null
 else
 	alias j=cdr # fallback to native zsh autojump
 fi
@@ -164,6 +163,6 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh
+[[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh &>/dev/null
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
