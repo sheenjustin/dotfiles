@@ -126,8 +126,8 @@ if (( $+commands[dnf] )); then
 fi
 
 # Source fzf if installed
+[ -f ${ZDOTDIR}/.fzf.zsh ] && source ${ZDOTDIR}/.fzf.zsh
 if (( $+commands[fzf] )); then
-	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 	alias f='fzf'
 fi
 
