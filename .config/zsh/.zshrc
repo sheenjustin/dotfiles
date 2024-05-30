@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+autoload -Uz promptinit
+promptinit
+prompt powerlevel9k
+
 # Lines configured by zsh-newuser-install
 HISTFILE=${ZDOTDIR}/.histfile
 HISTSIZE=1000
@@ -141,7 +145,6 @@ fi
 
 source "${ZDOTDIR}/.antidote/antidote.zsh"
 antidote load
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh &>/dev/null
 
