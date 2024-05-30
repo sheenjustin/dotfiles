@@ -1,5 +1,6 @@
+romkatv/powerlevel10k
+
 zsh-users/zsh-completions
-romkatv/powerlevel10k kind:fpath
-zsh-users/zsh-autosuggestions
+zsh-users/zsh-autosuggestions kind:defer
 zdharma-continuum/fast-syntax-highlighting kind:defer
 
