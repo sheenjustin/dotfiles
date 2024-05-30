@@ -6,7 +6,7 @@ Git and zsh installed. User shell changed to zsh.
 
 ```
 sudo apt install git zsh
-chsh -s /usr/bin/zsh
+chsh -s $(which zsh)
 ```
 
 Install:
