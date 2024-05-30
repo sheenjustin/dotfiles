@@ -14,9 +14,7 @@ Install:
 mkdir -p ~/Downloads
 cd ~/Downloads
 
-wget https://raw.githubusercontent.com/sheenjustin/dotfiles/master/setup.zsh
-
-zsh ./setup.zsh
+wget https://raw.githubusercontent.com/sheenjustin/dotfiles/master/.zsh/setup.zsh | zsh
 ```
 
 setup.zsh:
