@@ -48,6 +48,9 @@ umask 002
 # change locale
 export LANG="en_US.utf8"
 
+# force 16 colors
+export TERM="xterm"
+
 # Prettify completion
 zstyle ':completion:*' menu select
 zstyle ':completion:*:descriptions' format '%F{green}%U%d%u%f'
