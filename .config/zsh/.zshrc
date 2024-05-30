@@ -128,15 +128,6 @@ if (( $+commands[fzf] )); then
 	alias f='fzf'
 fi
 
-# Source plugins
-if [[ -f ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-	source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-if [[ -f ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme ]]; then
-	source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
-fi
-
 if (( $+commands[zoxide] )); then
 	eval "$(zoxide init --cmd j zsh)" &>/dev/null
 else
