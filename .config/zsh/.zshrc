@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.zsh/.histfile
+HISTFILE=${ZDOTDIR}/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 HISTDUP=erase
@@ -19,20 +19,20 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 
 # The following lines were added by compinstall
-zstyle :compinstall filename '${HOME}/.zshrc'
+zstyle :compinstall filename '${ZDOTDIR}/.zshrc'
 
 # Native ZSH Autojump implementation
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 
 zstyle ':chpwd:*' recent-dirs-default yes
-zstyle ':chpwd:*' recent-dirs-file "${HOME}/.zsh/.chpwd-recent-dirs"
+zstyle ':chpwd:*' recent-dirs-file "${ZDOTDIR}/.chpwd-recent-dirs"
 zstyle ':completion:*' recent-dirs-insert always
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' cache-path "~/.cache/.zcompcache" 
 autoload -Uz compinit
 
-compinit -C -d "${HOME}/.zsh/.zcompdump"
+compinit -C -d "${ZDOTDIR}/.zcompdump"
 # End of lines added by compinstall
 export LESSHISTFILE="${HOME}/.config/less/history"
 # autocomplete
@@ -42,19 +42,8 @@ ENABLE_CORRECTION=true
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 
-# Add custom functions
-fpath=(~/.zsh/funcs $fpath)
-fpath=(~/.zsh/plugins $fpath)
-
-for file in ~/.zsh/funcs/*; do
-	autoload $file:t:r
-done
-
 # Umask fix
 umask 002
-
-# add to $PATH
-export PATH=$PATH':'$HOME'/.local/bin:'$HOME'/.cargo/bin'
 
 # change locale
 export LANG="en_US.utf8"
@@ -158,6 +147,9 @@ fi
 if [ -z "$SSH_AUTH_SOCK" ]; then
 	eval "$(ssh-agent -s)" &>/dev/null
 fi
+
+source "${ZDOTDIR}/.antidote/antidote.zsh"
+antidote load
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh &>/dev/null
