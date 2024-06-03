@@ -31,7 +31,7 @@ command W w !sudo tee % > /dev/null
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+set so=128
 
 " Turn on the Wild menu
 set wildmenu
@@ -234,12 +234,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'airblade/vim-gitgutter'
 
 if !has('nvim')
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
+	Plug 'nathanaelkane/vim-indent-guides'
 endif
 
 Plug 'sheenjustin/vim-monokai-tasty'
@@ -252,6 +252,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 if has('nvim')
 	Plug 'nvim-lualine/lualine.nvim'
+	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'nvim-tree/nvim-web-devicons'
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'alexghergh/nvim-tmux-navigation'
@@ -264,6 +265,33 @@ inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>
 colorscheme vim-monokai-tasty
 
 if has('nvim')
-	lua require'nvim-treesitter.configs'.setup{highlight={enable=true}}
-	lua require('lualine').setup({ options={theme='powerline_dark'}})
+lua <<EOF
+	require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+	require('lualine').setup({ options={theme='powerline_dark'}})
+
+	local highlight = {
+		"RainbowViolet",
+		"RainbowBlue",
+		"RainbowGreen",
+		"RainbowYellow",
+		"RainbowOrange",
+		"RainbowRed",
+		"RainbowGray"
+	}
+
+	local hooks = require "ibl.hooks"
+	-- create the highlight groups in the highlight setup hook, so they are reset
+	-- every time the colorscheme changes
+	hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+		vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#A6E22E" })
+		vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#F92672" })
+		vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#66D9EF" })
+		vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E6DB74" })
+		vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#FD971F" })
+		vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#AE81FF" })
+		vim.api.nvim_set_hl(0, "RainbowGray", { fg = "#75715E" })
+	end)
+
+	require("ibl").setup { indent = { highlight = highlight } }
+EOF
 endif
