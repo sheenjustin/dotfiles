@@ -1,13 +1,13 @@
 [window]
 padding.x					= 16
-padding.y					= 8
+padding.y					= 16
 
 [font]
 normal.family				= "Hack Nerd Font Mono"
 size						= 13.0
 
 [colors.primary]
-background					= "#171812"
+background					= "#272822"
 foreground					= "#f8f8f2"
 
 [colors.normal]

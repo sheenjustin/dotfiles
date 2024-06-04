@@ -131,14 +131,14 @@ if (( $+commands[fzf] )); then
 fi
 
 if (( $+commands[zoxide] )); then
-	eval "$(zoxide init --cmd j zsh)" &>/dev/null
+	eval "$(zoxide init --cmd j zsh & )" &>/dev/null
 else
 	alias j=cdr # fallback to native zsh autojump
 fi
 
 # Make sure ssh agent is running
 if [ -z "$SSH_AUTH_SOCK" ]; then
-	eval "$(ssh-agent -s)" &>/dev/null
+	eval "$(ssh-agent -s)" &>/dev/null &
 fi
 
 source "${ZDOTDIR}/.antidote/antidote.zsh"
