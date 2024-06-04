@@ -226,9 +226,7 @@ highlight GitGutterDelete guifg=#F92672 ctermfg=1
 
 let data_dir = '~/.vim'
 
-if has('nvim')
-	set viminfo+=n=~/.vim/.nviminfo
-else
+if !has('nvim')
 	set viminfo+=n~/.vim/.viminfo
 endif
 
