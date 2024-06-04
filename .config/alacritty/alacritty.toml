@@ -1,0 +1,31 @@
+[window]
+padding.x					= 16
+padding.y					= 8
+
+[font]
+normal.family				= "Hack Nerd Font Mono"
+size						= 13.0
+
+[colors.primary]
+background					= "#171812"
+foreground					= "#f8f8f2"
+
+[colors.normal]
+black						= "#373832"
+red							= "#F92672"
+green						= "#A6E22E"
+yellow						= "#FD971F"
+blue						= "#AE81FF"
+magenta						= "#F92672"
+cyan						= "#66D9EF"
+white						= "#f8f8f2"
+
+[colors.bright]
+black						= "#75715e"
+red							= "#F92672"
+green						= "#A6E22E"
+yellow						= "#E6DB74"
+blue						= "#AE81FF"
+magenta						= "#F92672"
+cyan						= "#66D9EF"
+white						= "#f9f8f5"
