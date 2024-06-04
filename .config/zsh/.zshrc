@@ -100,7 +100,6 @@ fi
 
 if (( $+commands[vim] )); then
 	export EDITOR=$(which vim)
-	vim +'PlugInstall --sync' +qa
 fi
 
 if (( $+commands[nvim] )); then
@@ -109,7 +108,6 @@ if (( $+commands[nvim] )); then
 	alias vim='nvim'
 	export EDITOR=$(which nvim)
 	export SUDO_EDITOR=$(which nvim)
-	nvim --headless +PlugInstall +qall
 fi
 
 if (( $+commands[apt] )); then
