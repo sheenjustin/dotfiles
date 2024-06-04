@@ -122,7 +122,11 @@ hi LineNr	ctermfg=250
 "set nowb
 "set noswapfile
 
-set undodir=~/.vim/undodir/
+if has('nvim')
+	set undodir=~/.vim/undodir/
+else
+	set undodir=~/.vim/undodir/vim/
+endif
 set undofile
 
 set backupdir=~/.vim/backupdir/
@@ -221,7 +225,13 @@ highlight GitGutterChange guifg=#66D9EF ctermfg=3
 highlight GitGutterDelete guifg=#F92672 ctermfg=1
 
 let data_dir = '~/.vim'
-set viminfo+=n~/.vim/viminfo
+
+if has('nvim')
+	set viminfo+=n=~/.vim/.nviminfo
+else
+	set viminfo+=n~/.vim/.viminfo
+endif
+
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
