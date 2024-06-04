@@ -1,1 +1,3 @@
 viminfo
+.viminfo
+autoload/plug.vim.old
