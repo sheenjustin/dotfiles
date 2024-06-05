@@ -60,8 +60,18 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 	eval "$(ssh-agent -s)" &>/dev/null &
 fi
 
+if [[ ! -d "${ZDOTDIR}/.antidote" ]]; then
+	git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
+fi
+
+if [[ ! -d "${XDG_CONFIG_HOME}/tmux/plugins/tpm" ]]; then
+	mkdir -p "${XDG_CONFIG_HOME}/tmux/plugins/tpm"
+	git clone https://github.com/tmux-plugins/tpm ${XDG_CONFIG_HOME}/tmux/plugins/tpm
+fi
+
 source "${ZDOTDIR}/.antidote/antidote.zsh"
 antidote load
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh &>/dev/null
 
