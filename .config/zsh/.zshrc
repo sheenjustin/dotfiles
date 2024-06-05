@@ -84,6 +84,8 @@ fi
 # Source fzf, it should be installed by now
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
+fast-theme XDG:overlay &>/dev/null
+
 source "${ZDOTDIR}/.antidote/antidote.zsh"
 antidote load
 
