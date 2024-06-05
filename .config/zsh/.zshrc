@@ -79,10 +79,10 @@ fi
 if [[ ! -d "${XDG_CONFIG_HOME}/fzf" ]]; then
 	git clone --depth 1 https://github.com/junegunn/fzf.git "${XDG_CONFIG_HOME}/fzf"
 	sh -c "ZDOTDIR=${ZDOTDIR} ${XDG_CONFIG_HOME}/fzf/install --key-bindings --completion --update-rc --no-bash --no-fish --xdg"
-else
-	# Source fzf if installed
-	[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 fi
+
+# Source fzf, it should be installed by now
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
 source "${ZDOTDIR}/.antidote/antidote.zsh"
 antidote load
