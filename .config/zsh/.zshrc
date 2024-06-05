@@ -76,7 +76,7 @@ fi
 # Source fzf if installed
 [ -f ${ZDOTDIR}/.fzf.zsh ] && source ${ZDOTDIR}/.fzf.zsh
 
-# Download and install if not
+# Download and install fzf if not
 if (( ! $+commands[fzf] )); then
 	git clone --depth 1 https://github.com/junegunn/fzf.git "${XDG_CONFIG_HOME}/fzf"
 	sh -c ${XDG_CONFIG_HOME}/fzf/install --xdg --all
