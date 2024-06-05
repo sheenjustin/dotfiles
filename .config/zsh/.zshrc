@@ -71,18 +71,18 @@ fi
 
 if [[ ! -f ${HOME}/.vim/autoload/plug.vim ]]; then
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	vim -es -u ~/.vim/vimrc -i NONE -c "PlugInstall" -c "qa"
+	\vim -es -u ~/.vim/vimrc -i NONE -c "PlugInstall" -c "qa"
+	nvim -es -u ~/.vim/vimrc -i NONE -c "PlugInstall" -c "qa"
 fi
 
-# Source fzf if installed
-[ -f ${ZDOTDIR}/.fzf.zsh ] && source ${ZDOTDIR}/.fzf.zsh
-
-# Download and install fzf if not
-if (( ! $+commands[fzf] )); then
+# Download and install fzf if not installed
+if [[ ! -d "${XDG_CONFIG_HOME}/fzf" ]]; then
 	git clone --depth 1 https://github.com/junegunn/fzf.git "${XDG_CONFIG_HOME}/fzf"
-	sh -c ${XDG_CONFIG_HOME}/fzf/install --xdg --all
-	rm ${HOME}/.fzf.bash
+	sh -c "${XDG_CONFIG_HOME}/fzf/install --key-bindings --completion --no-bash --no-fish --xdg"
 	mv ${HOME}/.fzf.zsh ${ZDOTDIR}/.fzf.zsh
+	[ -f ${ZDOTDIR}/.fzf.zsh ] && source ${ZDOTDIR}/.fzf.zsh
+else
+	# Source fzf if installed
 	[ -f ${ZDOTDIR}/.fzf.zsh ] && source ${ZDOTDIR}/.fzf.zsh
 fi
 

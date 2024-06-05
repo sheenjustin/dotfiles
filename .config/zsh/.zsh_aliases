@@ -45,7 +45,6 @@ fi
 
 if (( $+commands[vim] )); then
 	export EDITOR=$(which vim)
-	vim -es -i NONE -c "PlugInstall" -c "qa"
 fi
 
 if (( $+commands[nvim] )); then
@@ -54,7 +53,6 @@ if (( $+commands[nvim] )); then
 	alias vim='nvim'
 	export EDITOR=$(which nvim)
 	export SUDO_EDITOR=$(which nvim)
-	nvim -es -i NONE -c "PlugInstall" -c "qa"
 fi
 
 if (( $+commands[apt] )); then
