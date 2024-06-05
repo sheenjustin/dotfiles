@@ -61,24 +61,24 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 if [[ ! -d "${ZDOTDIR}/.antidote" ]]; then
-	git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
+	git clone -q --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
 fi
 
 if [[ ! -d "${XDG_CONFIG_HOME}/tmux/plugins/tpm" ]]; then
 	mkdir -p "${XDG_CONFIG_HOME}/tmux/plugins/tpm"
-	git clone https://github.com/tmux-plugins/tpm ${XDG_CONFIG_HOME}/tmux/plugins/tpm
+	git clone -q https://github.com/tmux-plugins/tpm ${XDG_CONFIG_HOME}/tmux/plugins/tpm
 fi
 
 if [[ ! -f ${HOME}/.vim/autoload/plug.vim ]]; then
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs -s https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	\vim -es -u ~/.vim/vimrc -i NONE -c "PlugInstall" -c "qa"
 	nvim -es -u ~/.vim/vimrc -i NONE -c "PlugInstall" -c "qa"
 fi
 
 # Download and install fzf if not installed
 if [[ ! -d "${XDG_CONFIG_HOME}/fzf" ]]; then
-	git clone --depth 1 https://github.com/junegunn/fzf.git "${XDG_CONFIG_HOME}/fzf"
-	sh -c "ZDOTDIR=${ZDOTDIR} ${XDG_CONFIG_HOME}/fzf/install --key-bindings --completion --update-rc --no-bash --no-fish --xdg"
+	git clone -q --depth 1 https://github.com/junegunn/fzf.git "${XDG_CONFIG_HOME}/fzf"
+	sh -c "ZDOTDIR=${ZDOTDIR} ${XDG_CONFIG_HOME}/fzf/install --key-bindings --completion --update-rc --no-bash --no-fish --xdg" &>/dev/null
 fi
 
 # Source fzf, it should be installed by now
