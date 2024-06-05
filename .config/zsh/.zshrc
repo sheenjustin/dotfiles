@@ -78,12 +78,10 @@ fi
 # Download and install fzf if not installed
 if [[ ! -d "${XDG_CONFIG_HOME}/fzf" ]]; then
 	git clone --depth 1 https://github.com/junegunn/fzf.git "${XDG_CONFIG_HOME}/fzf"
-	sh -c "${XDG_CONFIG_HOME}/fzf/install --key-bindings --completion --no-bash --no-fish --xdg"
-	mv ${HOME}/.fzf.zsh ${ZDOTDIR}/.fzf.zsh
-	[ -f ${ZDOTDIR}/.fzf.zsh ] && source ${ZDOTDIR}/.fzf.zsh
+	sh -c "ZDOTDIR=${ZDOTDIR} ${XDG_CONFIG_HOME}/fzf/install --key-bindings --completion --update-rc --no-bash --no-fish --xdg"
 else
 	# Source fzf if installed
-	[ -f ${ZDOTDIR}/.fzf.zsh ] && source ${ZDOTDIR}/.fzf.zsh
+	[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 fi
 
 source "${ZDOTDIR}/.antidote/antidote.zsh"
