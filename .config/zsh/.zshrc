@@ -53,88 +53,7 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*:descriptions' format '%F{green}%U%d%u%f'
 zstyle ':completion:*:warnings' format '%F{yellow}Sorry, no matches for: %d%f'
 
-# Ease of use aliases
-alias tail='tail -300'
-alias tailf='tail -f'
-
-alias ls=' ls -lh --color'
-alias ll='ls -A'
-alias lt='ll -t'
-alias lsd='ls -d */'
-
-alias echo='echo -e'
-
-alias ...='cd ../../'
-alias ....='cd ../../../'
-
-alias cp='cp -pi'
-alias rm='rm -i'
-alias mv='mv -i'
-
-alias v='vim'
-alias vi='vim'
-alias vir='vim -R'
-alias vid='vim -d'
-alias visudo='sudo -e'
-
-alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias sudo='sudo '
-alias pls='sudo $(fc -ln -1)'
-
-alias ghe='GH_HOST=ca1gilah.sba.gov gh'
-
-# Customizations for if different commands are installed
-if (( $+commands[eza] )); then
-	alias ls='eza -lh --icons'
-	alias ll='ls -a'
-	alias tree='eza --tree'
-fi
-
-if (( $+commands[batcat] )); then
-	alias cat=batcat
-fi
-
-if (( $+commands[bat] )); then
-	alias cat=bat
-fi
-
-if (( $+commands[vim] )); then
-	export EDITOR=$(which vim)
-	$( \vim +'PlugInstall --sync' +qa &> /dev/null & )
-fi
-
-if (( $+commands[nvim] )); then
-	alias v='nvim'
-	alias vi='nvim'
-	alias vim='nvim'
-	export EDITOR=$(which nvim)
-	export SUDO_EDITOR=$(which nvim)
-	$( nvim --headless +PlugInstall +qa &> /dev/null & )
-fi
-
-if (( $+commands[apt] )); then
-	alias install='sudo apt install'
-	alias update='sudo apt update'
-	alias upgrade='update && sudo apt upgrade'
-fi
-
-if (( $+commands[dnf] )); then
-	alias install='sudo dnf install'
-	alias update='sudo dnf upgrade'
-	alias upgrade='sudo dnf upgrade'
-fi
-
-# Source fzf if installed
-[ -f ${ZDOTDIR}/.fzf.zsh ] && source ${ZDOTDIR}/.fzf.zsh
-if (( $+commands[fzf] )); then
-	alias f='fzf'
-fi
-
-if (( $+commands[zoxide] )); then
-	eval "$(zoxide init --cmd j zsh & )" &>/dev/null
-else
-	alias j=cdr # fallback to native zsh autojump
-fi
+source "${ZDOTDIR}/.zsh_aliases"
 
 # Make sure ssh agent is running
 if [ -z "$SSH_AUTH_SOCK" ]; then
@@ -146,4 +65,3 @@ antidote load
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh &>/dev/null
 
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
