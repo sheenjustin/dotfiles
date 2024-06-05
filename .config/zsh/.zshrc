@@ -57,7 +57,7 @@ source "${ZDOTDIR}/.zsh_aliases"
 
 # Make sure ssh agent is running
 if [ -z "$SSH_AUTH_SOCK" ]; then
-	eval "$(ssh-agent -s)" &>/dev/null &
+	eval "$(ssh-agent -s)" &>/dev/null
 fi
 
 if [[ ! -d "${ZDOTDIR}/.antidote" ]]; then
@@ -70,7 +70,8 @@ if [[ ! -d "${XDG_CONFIG_HOME}/tmux/plugins/tpm" ]]; then
 fi
 
 if [[ ! -f ${HOME}/.vim/autoload/plug.vim ]]; then
-	curl -fLo https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	vim -es -u ~/.vim/vimrc -i NONE -c "PlugInstall" -c "qa"
 fi
 
 # Source fzf if installed
