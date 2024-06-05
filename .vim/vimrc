@@ -2,15 +2,13 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=500
+set history=1024 		" Sets how many lines of history VIM has to remember
 
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
 
-" Set to auto read when a file is changed from the outside
-set autoread
+set autoread			" Set to auto read when a file is changed from the outside
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -23,15 +21,10 @@ nmap <leader>l :q<cr>
 " Using tpope/vim-commentary
 nmap <leader>/ gcc
 
-" :W sudo saves the file 
-" (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Center cursor - when moving vertically using j/k
-set so=128
+set so=128				" Center cursor - when moving vertically using j/k
 
 " Turn on the Wild menu
 set wildmenu
@@ -39,39 +32,22 @@ if !has('nvim')
 	set wildmode=list:longest,list:full
 endif
 
-"Always show current position
-set ruler
-
-" Height of the command bar
-set cmdheight=2
+set ruler				" Always show current position
+set cmdheight=1			" Height of the command bar
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 set bs=2
 
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases 
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch 
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw 
-
-" For regular expressions turn magic on
-set magic
-
-" Show matching brackets when text indicator is over them
-set showmatch 
-" How many tenths of a second to blink when matching brackets
-set mat=2
+set ignorecase			" Ignore case when searching
+set smartcase			" When searching try to be smart about cases 
+set hlsearch			" Highlight search results
+set incsearch			" Makes search act like search in modern browsers
+set lazyredraw			" Don't redraw while executing macros (good performance config)
+set magic				" For regular expressions turn magic on
+set showmatch			" Show matching brackets when text indicator is over them
+set mat=2				" How many tenths of a second to blink when matching brackets
 
 " No annoying sound on errors
 set noerrorbells
@@ -86,14 +62,9 @@ set numberwidth=4
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
+syntax enable			" Enable syntax highlighting
+set encoding=utf8		" Set utf8 as standard encoding and en_US as the standard language
+set ffs=unix,dos,mac	" Use Unix as the standard file type
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -118,21 +89,17 @@ set directory=~/.vim/backupdir/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"Use hard tabs always
-set noexpandtab
+set noexpandtab			"Use hard tabs always
 
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
 set softtabstop=0
 
-" Linebreak on 500 characters
-set lbr
-
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+set lbr					" Linebreak on 500 characters
+set ai					" Auto indent
+set si					" Smart indent
+set wrap				" Wrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
@@ -147,8 +114,11 @@ map <leader>pp :setlocal paste!<cr>
 " => Plugin Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set showbreak=↪\ 
-"set listchars=eol:↲,tab:»\ ,trail:~,extends:⟩,precedes:⟨,space:⋅
-"set list
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
 call plug#begin()
 
@@ -165,20 +135,20 @@ Plug 'sheenjustin/cf-utils.vim'
 Plug 'dag/vim-fish'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 if !has('nvim')
+	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-	Plug 'nathanaelkane/vim-indent-guides'
 endif
 
 if has('nvim')
-	Plug 'nvim-lualine/lualine.nvim'
-	Plug 'lukas-reineke/indent-blankline.nvim'
-	Plug 'nvim-tree/nvim-web-devicons'
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 	Plug 'alexghergh/nvim-tmux-navigation'
+	Plug 'f-person/git-blame.nvim'
+	Plug 'lukas-reineke/indent-blankline.nvim'
+	Plug 'nvim-lualine/lualine.nvim'
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'nvim-tree/nvim-web-devicons'
 endif
 
 call plug#end()
@@ -194,9 +164,11 @@ if !has('nvim')
 endif
 
 if has('nvim')
+	let g:gitblame_date_format = '%Y-%m-%d %H:%M'
 lua <<EOF
-	require'nvim-treesitter.configs'.setup{highlight={enable=true}}
 	require('lualine').setup({ options={theme='powerline_dark'}})
+	require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+	require('gitblame').setup()
 
 	local highlight = {
 		"RainbowViolet",

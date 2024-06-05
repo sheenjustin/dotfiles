@@ -73,6 +73,18 @@ if [[ ! -f ${HOME}/.vim/autoload/plug.vim ]]; then
 	curl -fLo https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
+# Source fzf if installed
+[ -f ${ZDOTDIR}/.fzf.zsh ] && source ${ZDOTDIR}/.fzf.zsh
+
+# Download and install if not
+if (( ! $+commands[fzf] )); then
+	git clone --depth 1 https://github.com/junegunn/fzf.git "${XDG_CONFIG_HOME}/fzf"
+	sh -c ${XDG_CONFIG_HOME}/fzf/install --xdg --all
+	rm ${HOME}/.fzf.bash
+	mv ${HOME}/.fzf.zsh ${ZDOTDIR}/.fzf.zsh
+	[ -f ${ZDOTDIR}/.fzf.zsh ] && source ${ZDOTDIR}/.fzf.zsh
+fi
+
 source "${ZDOTDIR}/.antidote/antidote.zsh"
 antidote load
 
