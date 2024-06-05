@@ -2,10 +2,10 @@ https://www.atlassian.com/git/tutorials/dotfiles
 
 Prerequisites:
 
-Git and zsh installed. User shell changed to zsh.
+Zsh, Git, and cURL installed. User shell changed to zsh.
 
 ```
-sudo apt install git zsh
+sudo apt install zsh git curl
 chsh -s $(which zsh)
 ```
 
@@ -16,8 +16,7 @@ curl https://raw.githubusercontent.com/sheenjustin/dotfiles/master/.config/zsh/s
 
 setup.zsh:
 ```
-git clone --bare https://github.com/sheenjustin/dotfiles/ $HOME/.cfg
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+git clone --bare https://github.com/sheenjustin/dotfiles/ ${HOME}/.cfg
+alias config='git --git-dir=${HOME}/.cfg/ --work-tree=${HOME}'
 config checkout
-config submodule update --init --recursive
 ```
