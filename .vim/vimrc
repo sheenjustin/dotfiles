@@ -30,7 +30,7 @@ command W w !sudo tee % > /dev/null
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
+" Center cursor - when moving vertically using j/k
 set so=128
 
 " Turn on the Wild menu
@@ -38,6 +38,7 @@ set wildmenu
 if !has('nvim')
 	set wildmode=list:longest,list:full
 endif
+
 "Always show current position
 set ruler
 
@@ -79,10 +80,8 @@ set t_vb=
 set tm=500
 
 " Add numbers on the left
-set nu
+set number
 set numberwidth=4
-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -96,24 +95,6 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-"Colors
-"highlight LineNr term=None cterm=NONE ctermfg=White ctermbg=DarkGrey gui=NONE guifg=DarkGrey guibg=NONE
-hi LineNr cterm=NONE ctermfg=250
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => GUI related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disable scrollbars (real hackers don't use scrollbars for navigation!)
-set guioptions-=r
-set guioptions-=R
-set guioptions-=l
-set guioptions-=L
-
-hi clear LineNr
-hi LineNr	ctermfg=250
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -126,13 +107,13 @@ if has('nvim')
 	set undodir=~/.vim/undodir/
 else
 	set undodir=~/.vim/undodir/vim/
+	set viminfo+=n~/.vim/.viminfo
 endif
+
 set undofile
 
 set backupdir=~/.vim/backupdir/
 set directory=~/.vim/backupdir/
-
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -148,12 +129,10 @@ set softtabstop=0
 
 " Linebreak on 500 characters
 set lbr
-set tw=500
 
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
@@ -164,76 +143,12 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Returns true if paste mode is enabled
-function! HasPaste()
-	if &paste
-		return 'PASTE MODE  '
-	endif
-	return ''
-endfunction
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set showbreak=↪\ 
 "set listchars=eol:↲,tab:»\ ,trail:~,extends:⟩,precedes:⟨,space:⋅
 "set list
-set clipboard+=unnamedplus
-hi Whitespace	ctermfg=239
-hi NonText		ctermfg=238
-
-match NonText /\t/
-match Whitespace /\s/
-
-hi WhiteSpaceMol ctermfg=236
-hi WhiteSpaceBol ctermfg=239
-
-match WhiteSpaceMol /\s/
-match WhiteSpaceBol /^\s\+/
-
-set ts=4 sw=4 noet
-let g:indent_guides_enable_on_vim_startup = 1
-
-let g:indent_guides_guide_size = 1
-
-let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  guibg=DarkGrey	ctermbg=235 ctermfg=239
-hi IndentGuidesEven guibg=DarkGrey	ctermbg=236 ctermfg=240
-
-" If this highlight group isn't defined it throws an error
-hi Normal			ctermfg=250
-
-
-"enable airline arrows with powerline fonts
-let g:airline_powerline_fonts = 1
-
-let g:airline_theme='base16_monokai'
-
-" Vim Git-Gutter settings
-set signcolumn=yes
-highlight! link SignColumn LineNr
-highlight SignColumn guibg=DarkGrey ctermbg=234
-
-highlight GitGutterAdd    guifg=#A6E22E ctermfg=2
-highlight GitGutterChange guifg=#66D9EF ctermfg=3
-highlight GitGutterDelete guifg=#F92672 ctermfg=1
-
-let data_dir = '~/.vim'
-
-if !has('nvim')
-	set viminfo+=n~/.vim/.viminfo
-endif
-
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
 
 call plug#begin()
 
@@ -244,12 +159,6 @@ Plug 'tpope/vim-commentary'
 
 Plug 'airblade/vim-gitgutter'
 
-if !has('nvim')
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'nathanaelkane/vim-indent-guides'
-endif
-
 Plug 'sheenjustin/vim-monokai-tasty'
 
 Plug 'sheenjustin/cf-utils.vim'
@@ -257,6 +166,12 @@ Plug 'dag/vim-fish'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+if !has('nvim')
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'nathanaelkane/vim-indent-guides'
+endif
 
 if has('nvim')
 	Plug 'nvim-lualine/lualine.nvim'
@@ -268,9 +183,15 @@ endif
 
 call plug#end()
 
+colorscheme vim-monokai-tasty
+
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
-colorscheme vim-monokai-tasty
+if !has('nvim')
+	"enable airline arrows with powerline fonts
+	let g:airline_powerline_fonts = 1
+	let g:airline_theme='base16_monokai'
+endif
 
 if has('nvim')
 lua <<EOF

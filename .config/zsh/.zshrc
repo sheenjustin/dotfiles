@@ -69,6 +69,10 @@ if [[ ! -d "${XDG_CONFIG_HOME}/tmux/plugins/tpm" ]]; then
 	git clone https://github.com/tmux-plugins/tpm ${XDG_CONFIG_HOME}/tmux/plugins/tpm
 fi
 
+if [[ ! -f ${HOME}/.vim/autoload/plug.vim ]]; then
+	curl -fLo https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
 source "${ZDOTDIR}/.antidote/antidote.zsh"
 antidote load
 
