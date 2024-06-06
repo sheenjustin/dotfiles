@@ -49,9 +49,16 @@ umask 002
 export LANG="en_US.utf8"
 
 # Prettify completion
-zstyle ':completion:*' menu select
-zstyle ':completion:*:descriptions' format '%F{green}%U%d%u%f'
-zstyle ':completion:*:warnings' format '%F{yellow}Sorry, no matches for: %d%f'
+zstyle ':completion:*:git-checkout:*' sort false # disable sort when completing `git checkout`
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # set list-colors to enable filename colorizing
+zstyle ':completion:*' menu no # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath' # preview directory's content with eza when completing cd
+zstyle ':fzf-tab:*' switch-group '<' '>' # switch group using `<` and `>`
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 source "${ZDOTDIR}/.zsh_aliases"
 
