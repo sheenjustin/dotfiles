@@ -48,6 +48,8 @@ umask 002
 # change locale
 export LANG="en_US.utf8"
 
+ eval $(dircolors -b ${XDG_CONFIG_HOME}/.dircolors)
+
 # Prettify completion
 zstyle ':completion:*:git-checkout:*' sort false # disable sort when completing `git checkout`
 # set descriptions format to enable group support
