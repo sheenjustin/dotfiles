@@ -66,6 +66,7 @@ syntax enable			" Enable syntax highlighting
 set encoding=utf8		" Set utf8 as standard encoding and en_US as the standard language
 set ffs=unix,dos,mac	" Use Unix as the standard file type
 
+set termguicolors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -152,10 +153,6 @@ endif
 
 call plug#end()
 
-" set Vim-specific sequences for RGB colors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
 
 colorscheme vim-monokai-tasty
 
