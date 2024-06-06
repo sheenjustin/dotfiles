@@ -135,7 +135,7 @@ Plug 'sheenjustin/cf-utils.vim'
 Plug 'dag/vim-fish'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-
+Plug 'sunaku/tmux-navigate'
 if !has('nvim')
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'vim-airline/vim-airline'
@@ -143,7 +143,6 @@ if !has('nvim')
 endif
 
 if has('nvim')
-	Plug 'alexghergh/nvim-tmux-navigation'
 	Plug 'f-person/git-blame.nvim'
 	Plug 'lukas-reineke/indent-blankline.nvim'
 	Plug 'nvim-lualine/lualine.nvim'

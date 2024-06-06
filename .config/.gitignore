@@ -1,7 +1,9 @@
 *
 
 !.gitignore
-!zsh/
 !.dircolors
 !.p10.zsh
 !nvim
+
+!tmux/
+!zsh/
