@@ -93,6 +93,10 @@ fast-theme XDG:overlay &>/dev/null # Add overlay to default fast syntax-highligh
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh &>/dev/null
 
 if (( $+commands[tmux] )) && [ -z "${TMUX}" ] ; then # Start tmux if installed and not running
-	tmux attach || tmux new
+	if tmux ls &> /dev/null; then
+		tmux attach
+	else
+		tmux
+	fi
 fi
 
