@@ -67,6 +67,7 @@ set encoding=utf8		" Set utf8 as standard encoding and en_US as the standard lan
 set ffs=unix,dos,mac	" Use Unix as the standard file type
 
 set termguicolors
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,8 +115,6 @@ map <leader>pp :setlocal paste!<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set showbreak=↪\ 
-
 " Run PlugInstall if there are missing plugins
 if !exists('$GIT_EXEC_PATH')
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
@@ -154,7 +153,6 @@ if has('nvim')
 endif
 
 call plug#end()
-
 
 colorscheme vim-monokai-tasty
 

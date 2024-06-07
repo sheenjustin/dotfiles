@@ -4,3 +4,4 @@ autoload/
 backupdir/
 undodir/
 plugged/
+sessions/
