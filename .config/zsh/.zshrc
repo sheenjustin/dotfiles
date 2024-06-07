@@ -92,7 +92,7 @@ fast-theme XDG:overlay &>/dev/null # Add overlay to default fast syntax-highligh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/.p10k.zsh ]] || source ~/.config/.p10k.zsh &>/dev/null
 
-if (( $+commands[tmux] )); then # Start tmux if installed
+if (( $+commands[tmux] )) && [ -z "${TMUX}" ] ; then # Start tmux if installed and not running
 	tmux attach
 fi
 
