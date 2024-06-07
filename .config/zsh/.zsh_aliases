@@ -67,13 +67,3 @@ if (( $+commands[dnf] )); then
 	alias upgrade='sudo dnf upgrade'
 fi
 
-if (( $+commands[fzf] )); then
-	alias f='fzf'
-fi
-
-if (( $+commands[zoxide] )); then
-	eval "$(zoxide init --cmd j zsh & )" &>/dev/null
-else
-	alias j=cdr # fallback to native zsh autojump
-fi
-
