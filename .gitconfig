@@ -25,6 +25,7 @@
 	cma = commit -a -m
 	rb = rebase --interactive origin/staging
 	dev = checkout development
+	staging = checkout staging
 	lg = log --graph --pretty=format:'%Cred%h %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 [pull]
 	rebase = true

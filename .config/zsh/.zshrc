@@ -61,7 +61,6 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup			# Use popup when in tmux
 if [[ ! -d "${ZDOTDIR}/.antidote" ]]; then # Antidote: ZSH Plugin Manager
 	git clone -q --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
 fi
-
 source "${ZDOTDIR}/.antidote/antidote.zsh"
 antidote load
 
@@ -75,14 +74,11 @@ if [[ ! -d "${XDG_CONFIG_HOME}/fzf" ]]; then # Download and install fzf if not i
 	git clone -q --depth 1 https://github.com/junegunn/fzf.git "${XDG_CONFIG_HOME}/fzf"
 	sh -c "ZDOTDIR=${ZDOTDIR} ${XDG_CONFIG_HOME}/fzf/install --key-bindings --completion --update-rc --no-bash --no-fish --xdg" &>/dev/null
 fi
-
-# Source fzf, it should be installed by now
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
 if (( ! $+commands[zoxide] )); then # Install zoxide
 	curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 fi
-
 eval "$(zoxide init --cmd j zsh & )" &>/dev/null
 
 ###############################################################################

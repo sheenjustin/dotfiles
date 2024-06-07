@@ -45,6 +45,7 @@ fi
 
 if (( $+commands[vim] )); then
 	export EDITOR=$(which vim)
+	export SUDO_EDITOR=$(which vim)
 fi
 
 if (( $+commands[nvim] )); then
