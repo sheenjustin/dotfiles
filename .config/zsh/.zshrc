@@ -94,9 +94,9 @@ fast-theme XDG:overlay &>/dev/null # Add overlay to default fast syntax-highligh
 
 if (( $+commands[tmux] )) && [ -z "${TMUX}" ] ; then # Start tmux if installed and not running
 	if tmux ls &> /dev/null; then
-		tmux attach
+		exec tmux attach
 	else
-		tmux
+		exec tmux
 	fi
 fi
 
