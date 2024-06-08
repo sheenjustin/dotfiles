@@ -25,7 +25,7 @@ eval $(dircolors -b ${XDG_CONFIG_HOME}/.dircolors)		# Set LS_COLORS
 ###############################################################################
 # Options
 
-setopt autocd extended_glob nobeep autolist
+setopt autocd extended_glob nobeep autolist globdots
 setopt autopushd correct pushdignoredups complete_in_word
 setopt append_history extended_history sharehistory
 setopt hist_ignore_space hist_ignore_all_dups hist_save_no_dups hist_ignore_dups hist_find_no_dups
@@ -57,6 +57,8 @@ zstyle ':completion:*' menu no							# force zsh not to show completion menu, wh
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath' # preview directory's content with eza when completing cd
 zstyle ':fzf-tab:*' switch-group '<' '>'				# switch group using `<` and `>`
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup			# Use popup when in tmux
+
+zstyle ':fzf-tab:*' fzf-bindings 'space:replace-query+print-query'
 
 ###############################################################################
 #Install plugin managers and fzf
