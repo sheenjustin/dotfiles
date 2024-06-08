@@ -41,7 +41,10 @@ bindkey "^[3;5~" delete-char
 
 ###############################################################################
 # Prettify completion using fzf-tab
+autoload -Uz compinit
+compinit -C -d "${ZDOTDIR}/.zcompdump"
 
+zstyle ':completion:*' cache-path "~/.cache/.zcompcache" 
 zstyle ':completion:*:git-checkout:*' sort false		# disable sort when completing `git checkout`
 # NOTE: don't use escape sequences here, fzf-tab will ignore them
 zstyle ':completion:*:descriptions' format '[ %d ]'		# set descriptions format to enable group support
