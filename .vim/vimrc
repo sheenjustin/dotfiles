@@ -1,23 +1,19 @@
-set nocompatible " this is redundant, but I prefer explicit settings over implicit/default behavior 
+set nocompatible		" this is redundant, but I prefer explicit settings over implicit/default behavior 
+
 "source $VIMRUNTIME/defaults.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set history=1024 		" Sets how many lines of history VIM has to remember
-
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-
 set autoread			" Set to auto read when a file is changed from the outside
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = " "
+filetype plugin on		" Enable filetype plugins
+filetype indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key maps
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = " " 	" Setting map leader to :space: for extra key combinations
 " Fast saving
 nmap <leader>s :w!<cr>
 nmap <leader>l :q<cr>
@@ -43,20 +39,15 @@ imap kj <ESC>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set so=128				" Center cursor - when moving vertically using j/k
-
 " Turn on the Wild menu
 set wildmenu
 if !has('nvim')			" I like neovims default wildmenu, these options are for vim
 	set wildmode=list:longest,list:full
 endif
 
+set scrolloff=128		" Center cursor - when moving vertically using j/k
 set ruler				" Always show current position
 set cmdheight=1			" Height of the command bar
-
-set backspace=eol,start,indent " Configure backspace so it acts as it should act
-set whichwrap+=<,>,h,l
-set backspace=2
 
 set ignorecase			" Ignore case when searching
 set smartcase			" When searching try to be smart about cases 
@@ -70,19 +61,18 @@ set matchtime=2			" How many tenths of a second to blink when matching brackets
 set splitright
 set splitbelow
 
-set timeout
-set timeoutlen=100
+set number relativenumber " Add numbers on the left
+set numberwidth=4
 
-set signcolumn=yes
-set updatetime=200
+set signcolumn=yes		" Always have sign column on
+set updatetime=200		" Time to update sign column
+set timeout				" explicitly set timeout
+set timeoutlen=100		" Timeout for mapping 
 
 set noerrorbells		" No annoying sound on errors
 set novisualbell
 set t_vb=
 set tm=500
-
-set number relativenumber " Add numbers on the left
-set numberwidth=4
 
 " Use absolute line numbers if in insert mode
 :augroup numbertoggle
@@ -96,40 +86,40 @@ set numberwidth=4
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable			" Enable syntax highlighting
 set encoding=utf8		" Set utf8 as standard encoding and en_US as the standard language
-set ffs=unix,dos,mac	" Use Unix as the standard file type
-
+set fileformats=unix,dos,mac	" Use Unix as the standard file type
 set cursorline
 set termguicolors
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
+" Turn backup off, since most stuff is in SVN, git etc. anyway...
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
+set undofile
 
 if !has('nvim')
 	set undodir=~/.vim/undodir/vim/ " vim and neovim have incompatible undofile formats
 	set viminfo+=n~/.vim/.viminfo " Same with viminfo
 endif
 
-set undofile
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set noexpandtab			"Use hard tabs always
 
-" 1 tab == 4 spaces
-set shiftwidth=4
+set shiftwidth=4		" 1 tab == 4 spaces
 set tabstop=4
-set softtabstop=0
+set softtabstop=0		" Disable spaces for tabs
 
 set linebreak			" Linebreak on 500 characters
 set autoindent			" Auto indent
 set smartindent			" Smart indent
 set wrap				" Wrap lines
+
+set backspace=eol,start,indent " Configure backspace so it acts as it should act
+set whichwrap+=<,>,h,l
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
@@ -139,9 +129,9 @@ let g:netrw_liststyle=3
 " => Plugin Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !exists('$GIT_EXEC_PATH') " Run PlugInstall if there are missing plugins and not in a git instance
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
+	autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+	  \| PlugInstall --sync | source $MYVIMRC
+	\| endif
 endif
 
 " COC mappings
@@ -153,8 +143,6 @@ endfunction
 " Use tab for trigger completion with characters ahead and navigate
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config
 inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
