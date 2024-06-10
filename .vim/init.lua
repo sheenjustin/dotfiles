@@ -20,6 +20,9 @@ require('lualine').setup{ options={theme='powerline_dark'} }
 require'nvim-treesitter.configs'.setup{highlight={enable=true}}
 
 require("telescope").setup {
+	pickers = {
+		find_files = { hidden = true }
+	},
 	extensions = {
 		file_browser = {
 			theme = "ivy",
