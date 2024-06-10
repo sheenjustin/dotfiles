@@ -35,6 +35,8 @@ nmap <leader>tp <cmd>tabp<cr>
 " Escape insert mode without using escape key
 imap jk <ESC>
 imap kj <ESC>
+vmap jk <ESC>
+vmap kj <ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
