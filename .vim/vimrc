@@ -47,15 +47,14 @@ set so=128				" Center cursor - when moving vertically using j/k
 
 " Turn on the Wild menu
 set wildmenu
-if !has('nvim')
+if !has('nvim')			" I like neovims default wildmenu, these options are for vim
 	set wildmode=list:longest,list:full
 endif
 
 set ruler				" Always show current position
 set cmdheight=1			" Height of the command bar
 
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
+set backspace=eol,start,indent " Configure backspace so it acts as it should act
 set whichwrap+=<,>,h,l
 set backspace=2
 
@@ -66,7 +65,7 @@ set incsearch			" Makes search act like search in modern browsers
 set lazyredraw			" Don't redraw while executing macros (good performance config)
 set magic				" For regular expressions turn magic on
 set showmatch			" Show matching brackets when text indicator is over them
-set matchtime=2				" How many tenths of a second to blink when matching brackets
+set matchtime=2			" How many tenths of a second to blink when matching brackets
 
 set splitright
 set splitbelow
@@ -74,14 +73,15 @@ set splitbelow
 set timeout
 set timeoutlen=100
 
-" No annoying sound on errors
-set noerrorbells
+set signcolumn=yes
+set updatetime=200
+
+set noerrorbells		" No annoying sound on errors
 set novisualbell
 set t_vb=
 set tm=500
 
-" Add numbers on the left
-set number relativenumber
+set number relativenumber " Add numbers on the left
 set numberwidth=4
 
 " Use absolute line numbers if in insert mode
@@ -105,19 +105,16 @@ set termguicolors
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
-"set nobackup
-"set nowb
-"set noswapfile
+set nobackup
+set nowb
+set noswapfile
 
 if !has('nvim')
-	set undodir=~/.vim/undodir/vim/
-	set viminfo+=n~/.vim/.viminfo
+	set undodir=~/.vim/undodir/vim/ " vim and neovim have incompatible undofile formats
+	set viminfo+=n~/.vim/.viminfo " Same with viminfo
 endif
 
 set undofile
-
-set backupdir=~/.vim/backupdir/
-set directory=~/.vim/backupdir/
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -129,9 +126,9 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=0
 
-set linebreak					" Linebreak on 500 characters
-set autoindent					" Auto indent
-set smartindent					" Smart indent
+set linebreak			" Linebreak on 500 characters
+set autoindent			" Auto indent
+set smartindent			" Smart indent
 set wrap				" Wrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -141,15 +138,38 @@ let g:netrw_liststyle=3
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Run PlugInstall if there are missing plugins
-if !exists('$GIT_EXEC_PATH')
+if !exists('$GIT_EXEC_PATH') " Run PlugInstall if there are missing plugins and not in a git instance
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 endif
 
+" COC mappings
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" End COC mappings
+
+" tpope/vim-commentary mappings
+nmap <leader>/ <PLUG>CommentaryLine
+vmap <leader>/ <PLUG>Commentary
+
 call plug#begin()
 
+" Plugins for both vim and neovim
 Plug 'sheenjustin/vim-monokai-tasty'
 Plug 'sheenjustin/cf-utils.vim'
 
@@ -164,43 +184,23 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'sunaku/tmux-navigate'
 
 if !has('nvim')
+	" Plugins only for vim. Neovim plugins are located in init.lua
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-endif
+	" End vim-only plugins
 
-" Would love to move these to init.lua but can't seem to be able to call
-" plug#begin twice
-if has('nvim')
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'kkharji/sqlite.lua'
-	Plug 'nvim-tree/nvim-web-devicons'
+	" Call plug#end for vim, neovim will call plug#end in init.lua
+	call plug#end()
 
-	Plug 'nvim-lualine/lualine.nvim'
-	Plug 'lukas-reineke/indent-blankline.nvim'
-	Plug 'f-person/git-blame.nvim'
-	
-	Plug 'mrjones2014/legendary.nvim'
-	Plug 'folke/which-key.nvim'
-
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
-	Plug 'nvim-telescope/telescope-file-browser.nvim'
-	Plug 'fannheyward/telescope-coc.nvim'
-endif
-
-call plug#end()
-
-colorscheme vim-monokai-tasty
-
-" Using tpope/vim-commentary
-nmap <leader>/ gcc
-
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-
-if !has('nvim')
-	"enable airline arrows with powerline fonts
-	let g:airline_powerline_fonts = 1
+	" Configuration options for Vim only plugins
+	let g:airline_powerline_fonts = 1 "enable airline arrows with powerline fonts
 	let g:airline_theme='base16_monokai'
+
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" Options below this must be replicated in			"
+	" init.lua as well 									"
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""
+	colorscheme vim-monokai-tasty
 endif
 

@@ -1,23 +1,51 @@
 local vim = vim -- One warning here instead of a billion later on.
 
-vim.cmd('source ~/.vim/vimrc')
+local config_path = vim.fn.stdpath('config') -- should be ~/.config/nvim, which is symlinked to ~/.vim
+vim.cmd.source(config_path .. '/vimrc')
+vim.opt.undodir = config_path .. '/undodir'
 
-vim.opt.undodir = '~/.vim/undodir'
+local Plug = vim.fn['plug#']
+-- No need to call plug#begin as it is called earlier from $config_path/vimrc
+
+Plug('nvim-lua/plenary.nvim')
+Plug('kkharji/sqlite.lua')
+Plug('nvim-tree/nvim-web-devicons')
+
+Plug('nvim-lualine/lualine.nvim')
+Plug('lukas-reineke/indent-blankline.nvim')
+Plug('f-person/git-blame.nvim')
+
+Plug('mrjones2014/legendary.nvim')
+Plug('folke/which-key.nvim')
+
+Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate'})
+Plug('nvim-telescope/telescope.nvim', { ['branch'] = '0.1.x' })
+Plug('nvim-telescope/telescope-file-browser.nvim')
+Plug('fannheyward/telescope-coc.nvim')
+
+vim.call('plug#end')
+
+-- Start options that need to be replicated in vimrc 
+vim.cmd.colorscheme('vim-monokai-tasty')
+-- End options that need to be replicated in vimrc
 
 vim.g.gitblame_date_format = '%Y-%m-%d %H:%M'
-
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 require('legendary').setup()
 require('which-key').setup()
 require('gitblame').setup()
 
-require('lualine').setup{ options={theme='powerline_dark'} }
-require'nvim-treesitter.configs'.setup{highlight={enable=true}}
+require('lualine').setup {
+	options = {
+		theme = 'powerline_dark'
+	}
+}
+
+require'nvim-treesitter.configs'.setup {
+	highlight = {
+		enable = true
+	}
+}
 
 require("telescope").setup {
 	pickers = {
@@ -50,6 +78,12 @@ require("telescope").setup {
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "coc"
 
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
 local highlight = {
 	"RainbowViolet",
 	"RainbowBlue",
@@ -59,7 +93,7 @@ local highlight = {
 	"RainbowGray"
 }
 
-local hooks = require "ibl.hooks"
+local hooks = require("ibl.hooks")
 -- create the highlight groups in the highlight setup hook, so they are reset
 -- every time the colorscheme changes
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
