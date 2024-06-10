@@ -1,3 +1,4 @@
+set nocompatible " this is redundant, but I prefer explicit settings over implicit/default behavior 
 "source $VIMRUNTIME/defaults.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -14,12 +15,30 @@ set autoread			" Set to auto read when a file is changed from the outside
 " like <leader>w saves the current file
 let mapleader = " "
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Key maps
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fast saving
 nmap <leader>s :w!<cr>
 nmap <leader>l :q<cr>
 
-" Using tpope/vim-commentary
-nmap <leader>/ gcc
+nmap <leader>h :set hlsearch!<cr>
+
+" Split buffer commands, vertical, horizontal, equal, and close
+nmap <leader>sv <C-w>v
+nmap <leader>sh <C-w>s
+nmap <leader>se <C-w>=
+nmap <leader>sx <cmd>close<cr>
+
+" Tab commands, open, close, next tab, previous tab
+nmap <leader>to <cmd>tabnew<cr>
+nmap <leader>tx <cmd>tabclose<cr>
+nmap <leader>tn <cmd>tabn<cr>
+nmap <leader>tp <cmd>tabp<cr>
+
+" Escape insert mode without using escape key
+imap jk <ESC>
+imap kj <ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -38,7 +57,7 @@ set cmdheight=1			" Height of the command bar
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-set bs=2
+set backspace=2
 
 set ignorecase			" Ignore case when searching
 set smartcase			" When searching try to be smart about cases 
@@ -47,7 +66,13 @@ set incsearch			" Makes search act like search in modern browsers
 set lazyredraw			" Don't redraw while executing macros (good performance config)
 set magic				" For regular expressions turn magic on
 set showmatch			" Show matching brackets when text indicator is over them
-set mat=2				" How many tenths of a second to blink when matching brackets
+set matchtime=2				" How many tenths of a second to blink when matching brackets
+
+set splitright
+set splitbelow
+
+set timeout
+set timeoutlen=100
 
 " No annoying sound on errors
 set noerrorbells
@@ -56,8 +81,15 @@ set t_vb=
 set tm=500
 
 " Add numbers on the left
-set number
+set number relativenumber
 set numberwidth=4
+
+" Use absolute line numbers if in insert mode
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+:augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -66,6 +98,7 @@ syntax enable			" Enable syntax highlighting
 set encoding=utf8		" Set utf8 as standard encoding and en_US as the standard language
 set ffs=unix,dos,mac	" Use Unix as the standard file type
 
+set cursorline
 set termguicolors
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -76,9 +109,7 @@ set termguicolors
 "set nowb
 "set noswapfile
 
-if has('nvim')
-	set undodir=~/.vim/undodir/
-else
+if !has('nvim')
 	set undodir=~/.vim/undodir/vim/
 	set viminfo+=n~/.vim/.viminfo
 endif
@@ -98,20 +129,15 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=0
 
-set lbr					" Linebreak on 500 characters
-set ai					" Auto indent
-set si					" Smart indent
+set linebreak					" Linebreak on 500 characters
+set autoindent					" Auto indent
+set smartindent					" Smart indent
 set wrap				" Wrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
+let g:netrw_liststyle=3
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,6 +150,9 @@ endif
 
 call plug#begin()
 
+Plug 'sheenjustin/vim-monokai-tasty'
+Plug 'sheenjustin/cf-utils.vim'
+
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -131,30 +160,41 @@ Plug 'tpope/vim-commentary'
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'sheenjustin/vim-monokai-tasty'
-
-Plug 'sheenjustin/cf-utils.vim'
-Plug 'dag/vim-fish'
-
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'sunaku/tmux-navigate'
+
 if !has('nvim')
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 endif
 
+" Would love to move these to init.lua but can't seem to be able to call
+" plug#begin twice
 if has('nvim')
-	Plug 'f-person/git-blame.nvim'
-	Plug 'lukas-reineke/indent-blankline.nvim'
-	Plug 'nvim-lualine/lualine.nvim'
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'kkharji/sqlite.lua'
 	Plug 'nvim-tree/nvim-web-devicons'
+
+	Plug 'nvim-lualine/lualine.nvim'
+	Plug 'lukas-reineke/indent-blankline.nvim'
+	Plug 'f-person/git-blame.nvim'
+	
+	Plug 'mrjones2014/legendary.nvim'
+	Plug 'folke/which-key.nvim'
+
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+	Plug 'nvim-telescope/telescope-file-browser.nvim'
+	Plug 'fannheyward/telescope-coc.nvim'
 endif
 
 call plug#end()
 
 colorscheme vim-monokai-tasty
+
+" Using tpope/vim-commentary
+nmap <leader>/ gcc
 
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
@@ -164,38 +204,3 @@ if !has('nvim')
 	let g:airline_theme='base16_monokai'
 endif
 
-if has('nvim')
-	let g:gitblame_date_format = '%Y-%m-%d %H:%M'
-lua <<EOF
-	require('lualine').setup({ options={theme='powerline_dark'}})
-	require'nvim-treesitter.configs'.setup{highlight={enable=true}}
-	require('gitblame').setup()
-
-	local highlight = {
-		"RainbowViolet",
-		"RainbowBlue",
-		"RainbowGreen",
-		"RainbowYellow",
-		"RainbowOrange",
-		"RainbowGray"
-	}
-	
-
-	local hooks = require "ibl.hooks"
-	-- create the highlight groups in the highlight setup hook, so they are reset
-	-- every time the colorscheme changes
-	hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-		vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#A6E22E" })
-		vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#66D9EF" })
-		vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E6DB74" })
-		vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#FD971F" })
-		vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#AE81FF" })
-		vim.api.nvim_set_hl(0, "RainbowGray", { fg = "#75715E" })
-	end)
-
-	require("ibl").setup {
-		indent = { highlight = highlight },
-		scope = { show_exact_scope = true, highlight = { "Statement" } }
-	}
-EOF
-endif

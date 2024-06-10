@@ -58,7 +58,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath' # p
 zstyle ':fzf-tab:*' switch-group '<' '>'				# switch group using `<` and `>`
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup			# Use popup when in tmux
 
-zstyle ':fzf-tab:*' fzf-bindings 'space:replace-query+print-query' # Space accepts whatever is in the query string
+zstyle ':fzf-tab:*' fzf-bindings 'space:print-query' # Space accepts whatever is in the query string
 
 ###############################################################################
 #Install plugin managers and fzf
