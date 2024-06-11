@@ -1,3 +1,5 @@
+-- Setup and Keymaps for Telescope Plugin
+
 local vim = vim
 
 require("telescope").setup {

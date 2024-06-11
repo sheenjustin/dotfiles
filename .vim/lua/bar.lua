@@ -1,3 +1,4 @@
+-- settings and keymaps for barbar plugin
 local vim = vim
 
 local map = vim.api.nvim_set_keymap

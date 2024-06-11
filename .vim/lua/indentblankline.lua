@@ -1,3 +1,5 @@
+-- Setup for indent-blankline plugin
+
 local vim = vim
 
 local highlight = {
