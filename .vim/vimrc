@@ -165,10 +165,8 @@ Plug 'sheenjustin/cf-utils.vim'
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-
-Plug 'airblade/vim-gitgutter'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'dense-analysis/ale'
@@ -179,6 +177,7 @@ if !has('nvim')
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
+	Plug 'airblade/vim-gitgutter'
 	" End vim-only plugins
 
 	" Call plug#end for vim, neovim will call plug#end in init.lua

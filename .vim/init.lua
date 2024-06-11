@@ -36,6 +36,7 @@ vim.g.gitblame_date_format = '%Y-%m-%d %H:%M'
 require('legendary').setup()
 require('which-key').setup()
 require('gitblame').setup()
+require('gitsigns').setup()
 
 require('lualine').setup {
 	options = {
