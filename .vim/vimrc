@@ -32,7 +32,7 @@ nmap <leader>tx <cmd>tabclose<cr>
 nmap <leader>tn <cmd>tabn<cr>
 nmap <leader>tp <cmd>tabp<cr>
 
-" Escape insert mode without using escape key
+" Escape insert and visual modes without using escape key
 imap jk <ESC>
 imap kj <ESC>
 vmap jk <ESC>
@@ -103,7 +103,7 @@ set undofile
 
 if !has('nvim')
 	set undodir=~/.vim/undodir/vim/ " vim and neovim have incompatible undofile formats
-	set viminfo+=n~/.vim/.viminfo " Same with viminfo
+	set viminfo+=n~/.vim/viminfo " Same with viminfo
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,7 +173,7 @@ Plug 'dense-analysis/ale'
 Plug 'sunaku/tmux-navigate'
 
 if !has('nvim')
-	" Plugins only for vim. Neovim plugins are located in init.lua
+	" Plugins only for vim. Neovim only plugins are located in init.lua
 	Plug 'nathanaelkane/vim-indent-guides'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
