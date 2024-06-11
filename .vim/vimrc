@@ -171,6 +171,7 @@ Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'dense-analysis/ale'
 Plug 'sunaku/tmux-navigate'
 
 if !has('nvim')
