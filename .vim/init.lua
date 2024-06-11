@@ -60,9 +60,9 @@ require'nvim-treesitter.configs'.setup {
 -- otherwise lua can't figure out which is which.
 -- e.g. telescope settings are in lua/tscope.lua
 
-package.path = package.path .. ';' .. config_path .. '/lua/?.lua'
+package.path = package.path .. ';' .. config_path .. '/lua/?.lua' -- adding $config_path/lua/*.lua to package path
 
 require('bar') -- barbar
 require('tscope') -- telescope
-require('indentblankline') -- indent-blankline
+require('indentblankline') -- indent-blankline and rainbow-delimiters
 
