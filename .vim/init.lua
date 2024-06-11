@@ -20,6 +20,7 @@ Plug('folke/which-key.nvim')
 
 Plug('nvim-lualine/lualine.nvim')
 Plug('lukas-reineke/indent-blankline.nvim')
+Plug('https://gitlab.com/HiPhish/rainbow-delimiters.nvim')
 Plug('f-person/git-blame.nvim')
 Plug('romgrk/barbar.nvim')
 

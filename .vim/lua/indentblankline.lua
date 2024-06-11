@@ -1,4 +1,4 @@
--- Setup for indent-blankline plugin
+-- Setup for indent-blankline plugin and rainbow-delimiters
 
 local vim = vim
 
@@ -23,7 +23,11 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 	vim.api.nvim_set_hl(0, "RainbowGray", { fg = "#75715E" })
 end)
 
+vim.g.rainbow_delimiters = { highlight = highlight }
+
 require("ibl").setup {
 	indent = { highlight = highlight },
 	scope = { show_exact_scope = true, highlight = { "Statement" } }
 }
+
+hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
