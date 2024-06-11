@@ -153,10 +153,6 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " End COC mappings
 
-" tpope/vim-commentary mappings
-nmap <leader>/ <PLUG>CommentaryLine
-vmap <leader>/ <PLUG>Commentary
-
 call plug#begin()
 
 " Plugins for both vim and neovim
@@ -165,8 +161,6 @@ Plug 'sheenjustin/cf-utils.vim'
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'dense-analysis/ale'
@@ -178,6 +172,8 @@ if !has('nvim')
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'airblade/vim-gitgutter'
+	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-commentary'
 	" End vim-only plugins
 
 	" Call plug#end for vim, neovim will call plug#end in init.lua
@@ -186,10 +182,14 @@ if !has('nvim')
 	" Configuration options for Vim only plugins
 	let g:airline_powerline_fonts = 1 "enable airline arrows with powerline fonts
 	let g:airline_theme='base16_monokai'
+	
+	" tpope/vim-commentary mappings
+	nmap <leader>/ <PLUG>CommentaryLine
+	vmap <leader>/ <PLUG>Commentary
 
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""
-	" Options below this must be replicated in			"
-	" init.lua as well 									"
+	" Colorscheme doesn't exist until after plug#end	"
+	" Therefore must be called here and in init.lua 	"
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""
 	colorscheme vim-monokai-tasty
 endif
