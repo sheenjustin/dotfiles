@@ -32,6 +32,7 @@ Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate'})
 Plug('nvim-telescope/telescope.nvim', { ['branch'] = '0.1.x' })
 Plug('nvim-telescope/telescope-file-browser.nvim')
 Plug('fannheyward/telescope-coc.nvim')
+Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 
 -- git plugins
 Plug('kdheepak/lazygit.nvim') -- uses telescope, settings are under lua/tscope.lua
