@@ -31,7 +31,7 @@ alias ghe='GH_HOST=ca1gilah.sba.gov gh'
 # Customizations for if different commands are installed
 if (( $+commands[eza] )); then
 	alias ls='eza -lh --icons'
-	alias ll='ls -a'
+	alias ll='ls -a --group'
 	alias tree='eza --tree'
 fi
 
