@@ -10,6 +10,8 @@ require'nvim-treesitter.configs'.setup {
 		, "css"
 		, "dockerfile"
 		, "html"
+		, "markdown"
+		, "markdown_inline"
 		, "javascript"
 		, "json"
 		, "python"
