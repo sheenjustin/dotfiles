@@ -2,17 +2,17 @@
 	email = sheenjustin@gmail.com
 	name = Sheen Justin
 [core]
-	editor = vim
+	editor = nvim
 	autocrlf = false
 	preloadIndex = true
 [merge]
-	tool = vscode
-[mergetool "vscode"]
-	cmd = code --wait $MERGED
+	tool = nvim
+[mergetool "nvim"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [diff]
-	tool = vscode
-[difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+	tool = nvim
+[difftool "nvim"]
+    cmd = nvim -d $LOCAL $REMOTE
 [alias]
 	st = status
 	co = checkout
@@ -26,9 +26,12 @@
 	rb = rebase --interactive origin/staging
 	dev = checkout development
 	staging = checkout staging
+	q = checkout quantico
 	lg = log --graph --pretty=format:'%Cred%h %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 [pull]
 	rebase = true
+[push]
+	autoSetupRemote = true
 [help]
 	autocorrect = 1
 [fetch]
@@ -39,7 +42,6 @@
     diffFilter = delta --color-only
 [delta]
     navigate = true    # use n and N to move between diff sections
-	#light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
 [merge]
 	conflictStyle = zdiff3
 [diff]
