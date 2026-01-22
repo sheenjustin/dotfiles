@@ -26,7 +26,7 @@ Plug('nvim-lualine/lualine.nvim')
 Plug('lukas-reineke/indent-blankline.nvim')
 Plug('https://gitlab.com/HiPhish/rainbow-delimiters.nvim')
 
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate'})
+Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate', ['branch'] = 'master'})
 
 -- telescope plugins
 Plug('nvim-telescope/telescope.nvim', { ['branch'] = '0.1.x' })

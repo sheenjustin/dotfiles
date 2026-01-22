@@ -1,5 +1,7 @@
 
-require'nvim-treesitter.configs'.setup {
+local configs = require('nvim-treesitter') 
+
+configs.setup({
 	ensure_installed = {
 		"c"
 		, "lua"
@@ -23,4 +25,4 @@ require'nvim-treesitter.configs'.setup {
 		enable = true
 		,disable = {"dockerfile"} -- there's an issue with dockerfile highlighting, will remove when fixed
 	}
-}
+})

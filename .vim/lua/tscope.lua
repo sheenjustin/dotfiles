@@ -1,8 +1,8 @@
 -- Setup and Keymaps for Telescope Plugin
 
 local vim = vim
-
-require("telescope").setup {
+local telescope = require("telescope")
+telescope.setup({
 	pickers = {
 		find_files = { hidden = true }
 	},
@@ -28,7 +28,7 @@ require("telescope").setup {
 			timeout = 3000, -- timeout for coc commands
 		}
 	},
-}
+})
 
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("coc")
