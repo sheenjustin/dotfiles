@@ -23,7 +23,7 @@
 	last = log -1 HEAD
 	cm = commit -m
 	cma = commit -a -m
-	rb = rebase --interactive origin/staging
+	rb = rebase --interactive origin/catweb
 	dev = checkout development
 	staging = checkout staging
 	q = checkout quantico
@@ -47,3 +47,7 @@
 	conflictStyle = zdiff3
 [diff]
     colorMoved = default
+[rebase]
+	updateRefs = true
+[rerere]
+	enabled = true
