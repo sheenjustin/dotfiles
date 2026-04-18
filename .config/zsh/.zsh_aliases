@@ -46,6 +46,7 @@ fi
 if (( $+commands[vim] )); then
 	export EDITOR=$(which vim)
 	export SUDO_EDITOR=$(which vim)
+	export SYSTEMD_EDITOR=$(which vim)
 fi
 
 if (( $+commands[nvim] )); then
@@ -54,6 +55,7 @@ if (( $+commands[nvim] )); then
 	alias vim='nvim'
 	export EDITOR=$(which nvim)
 	export SUDO_EDITOR=$(which nvim)
+	export SYSTEMD_EDITOR=$(which nvim)
 fi
 
 if (( $+commands[apt] )); then
