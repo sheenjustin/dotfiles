@@ -1,7 +1,7 @@
 source ${HOME}/.zshenv				# Make sure env file is sourced
 source "${ZDOTDIR}/.zsh_aliases"	# Set aliases
 
-if [[ ! -d ${HOME}/.cargo ]]; then # source cargo env if exists
+if [[ -d ${HOME}/.cargo ]]; then # source cargo env if exists
 	. ${HOME}/.cargo/env
 fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
